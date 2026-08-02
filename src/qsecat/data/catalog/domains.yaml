@@ -1,0 +1,192 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QSD-01
+  name: Cryptographic Transition & Agility
+  scope: Inventory, prioritization, migration, interoperability, rollback and lifecycle of classical and post-quantum
+    cryptography.
+  assets:
+  - applications
+  - protocols
+  - PKI
+  - certificates
+  - HSMs
+  - firmware
+  - code signing
+  - data archives
+  references:
+  - SRC-NIST-FIPS203
+  - SRC-NIST-FIPS204
+  - SRC-NIST-FIPS205
+  - SRC-NIST-AGILITY
+  - SRC-NIST-MIGRATION
+  - SRC-CYCLONEDX-CBOM
+- id: QSD-02
+  name: Quantum Cryptography & QKD
+  scope: Security assumptions, modules, classical authentication, key management, trusted nodes and operational
+    resilience of QKD.
+  assets:
+  - QKD modules
+  - quantum channel
+  - authenticated classical channel
+  - KMS
+  - trusted nodes
+  - key consumers
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+  - SRC-NSA-QKD
+- id: QSD-03
+  name: Quantum Networks & Internet
+  scope: Quantum links, entanglement services, memories, repeaters, transducers, control, routing, timing and orchestration.
+  assets:
+  - quantum links
+  - repeaters
+  - memories
+  - transducers
+  - orchestrators
+  - controllers
+  - time sources
+  references:
+  - SRC-ITU-Y3800
+  - SRC-ITU-X1710
+  - SRC-ITU-X1711
+  - SRC-ITU-Y3832
+  - SRC-DOE-QIS
+- id: QSD-04
+  name: QRNG, Entropy & Key Lifecycle
+  scope: Physical entropy source, digitization, conditioning, health tests, delivery interfaces and key lifecycle.
+  assets:
+  - entropy source
+  - ADC/digitizer
+  - conditioning function
+  - DRBG
+  - health tests
+  - RNG API
+  - key store
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+- id: QSD-05
+  name: Quantum Hardware & Physical Environment
+  scope: QPU/sensor physical implementation, shared effects, environment, support infrastructure, access and hardware
+    IP.
+  assets:
+  - QPU
+  - qubits
+  - photonic components
+  - cryogenics
+  - lasers
+  - traps
+  - shielding
+  - laboratory environment
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSD-06
+  name: Control Electronics, Firmware & Calibration
+  scope: Control waveforms, electronics, FPGA/microcode, calibration data, telemetry, baselines and recovery.
+  assets:
+  - controllers
+  - AWGs
+  - FPGAs
+  - firmware
+  - calibration service
+  - telemetry
+  - configuration store
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSD-07
+  name: Quantum Software, Compilers & Circuits
+  scope: SDK, dependencies, transpilation, optimization, circuit confidentiality, integrity and reproducibility.
+  assets:
+  - SDK
+  - compiler
+  - transpiler
+  - optimizer
+  - circuit
+  - build system
+  - package registry
+  - result decoder
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  - SRC-ARGONNE-TAXONOMY
+- id: QSD-08
+  name: Quantum Cloud, API & Multi-tenancy
+  scope: Identity, authorization, API, job queues, storage, scheduling, isolation, data residency and provider dependency.
+  assets:
+  - IAM
+  - API gateway
+  - job service
+  - queue
+  - tenant storage
+  - scheduler
+  - backend
+  - audit logs
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  - SRC-ARGONNE-TAXONOMY
+- id: QSD-09
+  name: Hybrid Workflows & Quantum ML
+  scope: Classical optimizers, orchestration, data, model/circuit interfaces, iterative state and downstream decisions.
+  assets:
+  - optimizer
+  - training data
+  - feature encoder
+  - workflow engine
+  - model registry
+  - decision service
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSD-10
+  name: Quantum Sensing, Metrology & Timing
+  scope: Sensor/reference authenticity, calibration, measurement provenance, availability and decision integrity.
+  assets:
+  - quantum sensor
+  - clock/reference
+  - calibration artifacts
+  - measurement pipeline
+  - navigation/decision system
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSD-11
+  name: Supply Chain, Provenance & Lifecycle
+  scope: Components, software, vendors, updates, provenance, maintenance, support, concentration and secure retirement.
+  assets:
+  - supplier
+  - component BOM
+  - firmware update
+  - software dependency
+  - maintenance channel
+  - service contract
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSD-12
+  name: Governance, Assurance & Resilience
+  scope: Ownership, claims, policies, skills, legal obligations, incident response, business continuity and independent
+    assurance.
+  assets:
+  - policies
+  - risk register
+  - assurance case
+  - incident plan
+  - contracts
+  - training records
+  references:
+  - SRC-IEEE-P1947
+  - SRC-QRAMM
+  - SRC-QUASAR
+  - SRC-BASERI-RISK

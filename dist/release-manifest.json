@@ -1,0 +1,34 @@
+{
+  "name": "Q-SECAT",
+  "expanded_name": "Quantum Security Evaluation, Controls, Assurance & Testing Framework",
+  "version": "0.1.0",
+  "status": "community-draft",
+  "release_date": "2026-08-01",
+  "source_cutoff_date": "2026-08-01",
+  "creator_and_principal_author": "Edwin Javier Peñuela Camacho",
+  "target_repository": "https://github.com/sr-maximus/Q-SECAT",
+  "license": "Apache-2.0",
+  "counts": {
+    "sources": 27,
+    "domains": 12,
+    "tactics": 12,
+    "techniques": 48,
+    "top10": 10,
+    "controls": 48,
+    "tests": 48,
+    "assurance-levels": 6,
+    "profiles": 7,
+    "mappings": 10
+  },
+  "validation": {
+    "catalog_traceability": "passed",
+    "assessment_json_schema": "passed",
+    "example_assessment": "passed",
+    "automated_tests": "5 passed",
+    "python_compile": "passed",
+    "yaml_json_parse": "passed",
+    "markdown_local_links": "passed",
+    "wheel_install_and_cli_smoke_test": "passed"
+  },
+  "disclaimer": "Research and defensive assessment community draft; not a standard, certification or security guarantee."
+}

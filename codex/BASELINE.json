@@ -1,0 +1,38 @@
+{
+  "project": "Q-SECAT",
+  "expanded_name": "Quantum Security Evaluation, Controls, Assurance & Testing Framework",
+  "version": "0.1.0",
+  "status": "community-draft",
+  "creator_and_principal_author": "Edwin Javier Peñuela Camacho",
+  "target_repository": "https://github.com/sr-maximus/Q-SECAT",
+  "license": "Apache-2.0",
+  "baseline_checked_on": "2026-08-02",
+  "catalog_counts": {
+    "sources": 27,
+    "domains": 12,
+    "tactics": 12,
+    "techniques": 48,
+    "top10": 10,
+    "controls": 48,
+    "tests": 48,
+    "assurance_levels": 6,
+    "profiles": 7,
+    "mappings": 10
+  },
+  "local_validation": {
+    "command_environment": "Python 3.13 with PYTHONPATH=src",
+    "pytest": "5 passed",
+    "traceability": "passed",
+    "package_data_sync": "passed",
+    "coverage_command": "passed",
+    "example_validation": "passed",
+    "example_scoring": "passed"
+  },
+  "known_baseline_scope": {
+    "cli_commands": ["validate", "score", "coverage"],
+    "catalog_format": "YAML",
+    "assessment_schema": "JSON Schema Draft 2020-12",
+    "package_outputs": ["wheel", "sdist", "CSV matrix", "coverage JSON", "example score JSON"]
+  },
+  "note": "This file records the measured starting point. Codex must not treat target counts or future validations as completed until it actually implements and runs them."
+}

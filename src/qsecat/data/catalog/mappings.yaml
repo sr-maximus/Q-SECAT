@@ -1,0 +1,48 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- qsecat: QSD-01
+  external: NIST CSWP 39upd1
+  relationship: specializes
+  note: Crypto-agility and migration evidence.
+- qsecat: QSC-01.001
+  external: CycloneDX CBOM
+  relationship: implements
+  note: Cryptographic inventory representation.
+- qsecat: QSC-01.003
+  external: NIST FIPS 203/204/205
+  relationship: implements
+  note: Approved algorithm profiles must use applicable current standards.
+- qsecat: QSD-02
+  external: ISO/IEC 23837-1/-2
+  relationship: related_to
+  note: QKD requirements and evaluation/testing.
+- qsecat: QSC-02.002
+  external: ETSI GS QKD 016
+  relationship: evidences
+  note: Protection-profile evidence may support scoped implementation claims.
+- qsecat: QSD-03
+  external: ITU-T Y.3800/X.1710/X.1711/Y.3832
+  relationship: specializes
+  note: Network architecture, security, protocol and orchestration.
+- qsecat: QSD-04
+  external: NIST SP 800-90 series
+  relationship: related_to
+  note: Entropy-source and RBG validation concepts.
+- qsecat: QSD-07
+  external: MITRE ATT&CK / CWE / CAPEC
+  relationship: related_to
+  note: Classical software and supply-chain attack concepts remain applicable; IDs are not equivalent.
+- qsecat: QSD-09
+  external: NIST AI RMF / MITRE ATLAS
+  relationship: related_to
+  note: Relevant where hybrid workflows include AI/ML; not a full crosswalk.
+- qsecat: QSD-12
+  external: NIST CSF 2.0 / ISO/IEC 27001
+  relationship: related_to
+  note: Governance and risk-management context.

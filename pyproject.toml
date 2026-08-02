@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "q-secat"
+version = "0.1.0"
+description = "Quantum Security Evaluation, Controls, Assurance & Testing Framework"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+  {name = "Edwin Javier Peñuela Camacho"}
+]
+keywords = ["quantum cybersecurity", "PQC", "QKD", "QRNG", "security testing", "risk"]
+dependencies = [
+  "PyYAML>=6.0.2,<7",
+  "jsonschema[format]>=4.23,<5"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.9,<1"
+]
+
+[project.scripts]
+qsecat = "qsecat.cli:main"
+
+[project.urls]
+Documentation = "https://github.com/sr-maximus/Q-SECAT"
+Source = "https://github.com/sr-maximus/Q-SECAT"
+Issues = "https://github.com/sr-maximus/Q-SECAT/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+qsecat = [
+  "data/catalog/*.yaml",
+  "data/schema/*.json"
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"

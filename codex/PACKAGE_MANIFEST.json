@@ -1,0 +1,467 @@
+{
+  "package": "Q-SECAT v0.1.0 — Complete Codex Handoff",
+  "creator_and_principal_author": "Edwin Javier Peñuela Camacho",
+  "generated_on": "2026-08-02",
+  "file_count_excluding_this_manifest": 90,
+  "total_bytes_excluding_this_manifest": 754686,
+  "important_entrypoints": [
+    "START_CODEX.md",
+    "PROMPT_CODEX_QSECAT.md",
+    "codex/PROMPT_MASTER_QSECAT.md",
+    "codex/ACCEPTANCE_CRITERIA.md",
+    "codex/BASELINE.json",
+    "README.md"
+  ],
+  "files": [
+    {
+      "path": ".editorconfig",
+      "size_bytes": 221,
+      "sha256": "652a92d6256b7683e80115e46269b01b8aeb3a264c4461d925b41a2740be796d"
+    },
+    {
+      "path": ".gitattributes",
+      "size_bytes": 58,
+      "sha256": "d26cbce2b692bbfa7b3c6278f197b8149144c18b5ada556e7ac34080e0c6ea6c"
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "size_bytes": 36,
+      "sha256": "c8782f54a4d71586e5a9f8d4dc54a3aa1d2c23902710fd55e47c5d6244fc18f7"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE.md",
+      "size_bytes": 324,
+      "sha256": "b22fbc50026c11c1175dd3f4ebc63723b46c4a89f68d6b0ec5f6748ac886f761"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "size_bytes": 353,
+      "sha256": "44af6d4ac2e4e73d2dcc3dae24ffe606cb8bad635425392890a0e8e11861834f"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "size_bytes": 263,
+      "sha256": "ea3461cba44406bb38508d94abbc36e2244a24f17f00602d95b4eecf41afe954"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "size_bytes": 940,
+      "sha256": "c2bd32cb78e4f9024a90fb64f22b961957468280163dd25dd9da2163eb5d9d92"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 131,
+      "sha256": "89e6ebbee258f3528143b0cb41ab4a2e61d5cfa487530696eb704faa5644a4f9"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size_bytes": 674,
+      "sha256": "000b6dcb747940b036fd21730102ffb5d6bf4355bb89a99f364efd76797335e8"
+    },
+    {
+      "path": "CITATION.cff",
+      "size_bytes": 808,
+      "sha256": "f0b010e968f621291e892cafc74e85a2afd929da014ffc75a6ac156564aa72ba"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "size_bytes": 476,
+      "sha256": "7198f727c8ad43857752b0b2ce64c325ac6a822702fb8daaeb8c84ded75a45c5"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size_bytes": 936,
+      "sha256": "ebebb8874cc59a7e99d4d60a16a8cae9beb50a2c92db0832268c839d4bb1fadb"
+    },
+    {
+      "path": "CONTRIBUTORS.md",
+      "size_bytes": 250,
+      "sha256": "030dd7f30bbdb12cc764edfc4d823c5523e287d86cacebcfcc6803aaa37b85e0"
+    },
+    {
+      "path": "DCO.md",
+      "size_bytes": 836,
+      "sha256": "012e89bfde634d9c98b0a5c9fa34045678c127e2419f83ea44611c06163a91c4"
+    },
+    {
+      "path": "Dockerfile",
+      "size_bytes": 425,
+      "sha256": "0c405018429ce6679cbd524b78e8fb1b40e8181ce0f7e98a315c0b1078a113ec"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "MANIFEST.in",
+      "size_bytes": 649,
+      "sha256": "d50a3d17229ecb54dacd58ee048b818a35679d113e0fab245a0418822e112322"
+    },
+    {
+      "path": "Makefile",
+      "size_bytes": 403,
+      "sha256": "c675ade963908425b69059eb8940ced8cc89f344452805ee7cca0bb7480958d3"
+    },
+    {
+      "path": "NOTICE.md",
+      "size_bytes": 755,
+      "sha256": "d1db4f7f3294e3cf8a3a23f98a0351ff58e9d9362f8e6163193bbdc06907ba61"
+    },
+    {
+      "path": "PROMPT_CODEX_QSECAT.md",
+      "size_bytes": 25034,
+      "sha256": "e8790256fcc3a3323b6aa89ab72a144e093615e33b58e280a205359f48a5c8a9"
+    },
+    {
+      "path": "PROMPT_CODEX_QSECAT.txt",
+      "size_bytes": 25034,
+      "sha256": "e8790256fcc3a3323b6aa89ab72a144e093615e33b58e280a205359f48a5c8a9"
+    },
+    {
+      "path": "README.en.md",
+      "size_bytes": 6904,
+      "sha256": "8bbb86df751183c539672fad1e4c95b4dd1ed163f6b09c379e9ca16a52027291"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 8030,
+      "sha256": "bb77e9ccf5530ffcd1963a1b39a1f03415a98cc72205212612adc72fe23ca46f"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "size_bytes": 958,
+      "sha256": "837b49215b3bb7f5c78142fdec59891da56c2ad87125ef9e572c3259e1a59381"
+    },
+    {
+      "path": "SECURITY.md",
+      "size_bytes": 708,
+      "sha256": "0492118760b80b5c722d1f35cb518c28ae276eb6242f936b1afae5bd7057d8f1"
+    },
+    {
+      "path": "START_CODEX.md",
+      "size_bytes": 1376,
+      "sha256": "741331cf429f0b9337634cd01a3f92efe68e9fa71a7292311fcf1bce54ca6255"
+    },
+    {
+      "path": "catalog/assurance-levels.yaml",
+      "size_bytes": 1036,
+      "sha256": "f299982ff14ec7360a2fb1708b14d188bee3e977d5209e881f04e4140c999359"
+    },
+    {
+      "path": "catalog/controls.yaml",
+      "size_bytes": 31902,
+      "sha256": "695c8fbe76bd446e5d8b745c18f9160136c7dd75f728b0d8a237f0575bf482f3"
+    },
+    {
+      "path": "catalog/domains.yaml",
+      "size_bytes": 4728,
+      "sha256": "3a1aa981c4124f210e15e3363bfae39f16d3f9723bf517053c3b9dca0723e453"
+    },
+    {
+      "path": "catalog/mappings.yaml",
+      "size_bytes": 1627,
+      "sha256": "2ad4208918734fd0a1e3b4fd66b5895e9addba45d3a8622c163f8e015a587564"
+    },
+    {
+      "path": "catalog/profiles.yaml",
+      "size_bytes": 1412,
+      "sha256": "f02bd793d9d3619849d11484a86baab171d6c5fc7f8d7c3e94a13b0bdcd67a06"
+    },
+    {
+      "path": "catalog/sources.yaml",
+      "size_bytes": 4852,
+      "sha256": "b3ec81a73b7e381abab06c9104cce206656bf1622e2a41c5fbce827aeb1de302"
+    },
+    {
+      "path": "catalog/tactics.yaml",
+      "size_bytes": 1962,
+      "sha256": "03a0ecc5463ab80b06b21a2c96bd89ba372d6b0f9c31b2ffffa6cc09cfce1f13"
+    },
+    {
+      "path": "catalog/techniques.yaml",
+      "size_bytes": 44498,
+      "sha256": "00a571f7767c62a7d2f9bfba9808049192e4c27eecb630b7c669cdaffa7f6e56"
+    },
+    {
+      "path": "catalog/tests.yaml",
+      "size_bytes": 58737,
+      "sha256": "a6d3ea4bb49dbe1944da1d5416c2bd96d44bd850f68d166b52b11b8bcda2634e"
+    },
+    {
+      "path": "catalog/top10.yaml",
+      "size_bytes": 6579,
+      "sha256": "90e2b59ea823a7d14b27ac81b158fe29273de4c500af59b8b486734c50eb1a5f"
+    },
+    {
+      "path": "codex/ACCEPTANCE_CRITERIA.md",
+      "size_bytes": 4673,
+      "sha256": "c53f0195d64fb5e437f37f2765263c6094b498b870128a29d33a633a73fa2874"
+    },
+    {
+      "path": "codex/BASELINE.json",
+      "size_bytes": 1318,
+      "sha256": "8a653180a2bbbfc3b154b031d8b428f039d82534bacb158404a96069ae2f32f0"
+    },
+    {
+      "path": "codex/PROMPT_MASTER_QSECAT.md",
+      "size_bytes": 25034,
+      "sha256": "e8790256fcc3a3323b6aa89ab72a144e093615e33b58e280a205359f48a5c8a9"
+    },
+    {
+      "path": "codex/README.md",
+      "size_bytes": 642,
+      "sha256": "746318444f1c6262626d094cf464741a614574212f5c8ab028936db530ecf5bf"
+    },
+    {
+      "path": "dist/SHA256SUMS",
+      "size_bytes": 535,
+      "sha256": "33cdb7215661dc2bf84186f30982a85d19467c5f6f34da9843e52b9879407b8d"
+    },
+    {
+      "path": "dist/q_secat-0.1.0-py3-none-any.whl",
+      "size_bytes": 57924,
+      "sha256": "c515808a903859d60add347b22d569e4966a51db2ad69bc95fa560a9ec3985fe"
+    },
+    {
+      "path": "dist/q_secat-0.1.0.tar.gz",
+      "size_bytes": 125312,
+      "sha256": "4581379d0f94c073aaae39b0bad900542b00848cc8f34007aaa0b87dda0db233"
+    },
+    {
+      "path": "dist/qsecat-coverage.json",
+      "size_bytes": 269,
+      "sha256": "96e9ba0e85f49804eeb0cae25d10c15fbf20cb39b8ea47610efdf78ae6f1e9ef"
+    },
+    {
+      "path": "dist/qsecat-example-score.json",
+      "size_bytes": 1084,
+      "sha256": "2777c4a0f84910a70b4a692ce2ce7ed25533b53a0a19c6676ad057acc5276a6a"
+    },
+    {
+      "path": "dist/qsecat-matrix.csv",
+      "size_bytes": 16232,
+      "sha256": "55233b1df74504ed72edcd74d3b4589fe2f5a9f7009abe56351d90d3f7d9ea5d"
+    },
+    {
+      "path": "dist/release-manifest.json",
+      "size_bytes": 1060,
+      "sha256": "9f4d8b237535fd461b26ccdf39eb763aff29394f25655579894ae7a621b23d37"
+    },
+    {
+      "path": "docs/00-methodology.md",
+      "size_bytes": 5521,
+      "sha256": "12d235722acd8242a3cd3b29a56ff7e1d46d6324c21f9b5b17110467b6128e8f"
+    },
+    {
+      "path": "docs/01-landscape.md",
+      "size_bytes": 3644,
+      "sha256": "2ba6e5e393e033007ef5d8601bd6400a13aacb275acae5740d85e592d92fced6"
+    },
+    {
+      "path": "docs/02-scope-domains.md",
+      "size_bytes": 3017,
+      "sha256": "e16e6e2055aa1e78d96cf28e692f6fcf55b0cfa011bddfa90ede3b224e98f679"
+    },
+    {
+      "path": "docs/03-threat-model.md",
+      "size_bytes": 3476,
+      "sha256": "e8b009b89f37a958c618f27995b72c6cc847107ae0b72e8e016a9083c2560b30"
+    },
+    {
+      "path": "docs/04-controls.md",
+      "size_bytes": 2032,
+      "sha256": "44b84a7a59c31dfbded5eaef5d92e4af5e256624737eab47c5a5867efe1cd484"
+    },
+    {
+      "path": "docs/05-testing-methodology.md",
+      "size_bytes": 2590,
+      "sha256": "69afa4868bd8a9ec5ec804e2d5c06b2a672d137d8c50d37aa1461555df4c3262"
+    },
+    {
+      "path": "docs/06-risk-model.md",
+      "size_bytes": 4042,
+      "sha256": "15a72895dc980e2249db9e651ce14d505b50064c89cec3427a3f6742b99069d9"
+    },
+    {
+      "path": "docs/07-assurance-evidence.md",
+      "size_bytes": 2611,
+      "sha256": "15b9e1013b8dc1fd4ba3ac6208a67dc0faaa04368fb5d95f651eb0c360649056"
+    },
+    {
+      "path": "docs/08-mappings.md",
+      "size_bytes": 1917,
+      "sha256": "b751ca2c3a6e833ae35aeb2d145aaebe641c94a6d6df8d30b9ca029d30214468"
+    },
+    {
+      "path": "docs/09-roadmap.md",
+      "size_bytes": 1695,
+      "sha256": "51ed31f36036c3312ecc587d8de0d1c87cdbb2ec5c7c0c427ff48a6c43f41d54"
+    },
+    {
+      "path": "docs/10-github-publication.md",
+      "size_bytes": 3187,
+      "sha256": "8372045a54fedb0030786a39755116858c57346b95206f402d335980bd8d065f"
+    },
+    {
+      "path": "docs/Q-SECAT-whitepaper-es.md",
+      "size_bytes": 20156,
+      "sha256": "4647ed639df989a10f50197e397edb30fe9f6c0d5708e283410302492391c526"
+    },
+    {
+      "path": "docs/glossary.md",
+      "size_bytes": 1712,
+      "sha256": "c4befe93b7f7bd09f8b8a4b77a80b68fa2c2b1a09aaba1ff5600cdb8e6c611b0"
+    },
+    {
+      "path": "docs/governance.md",
+      "size_bytes": 1140,
+      "sha256": "3fd76f4be964691f088785c09a7c54b5055e0b41589cac462d1f9d6eb422ca9b"
+    },
+    {
+      "path": "docs/sources.md",
+      "size_bytes": 4648,
+      "sha256": "a9c5c0627c27bcca9a98bc48fd556e587fa467422a042a990257e62778803577"
+    },
+    {
+      "path": "examples/assessment-example.yaml",
+      "size_bytes": 5989,
+      "sha256": "ff449384c8f10036ddd23669220d97ff716436546f8d015a6f95e86dd7d1a52b"
+    },
+    {
+      "path": "examples/assessment-template.yaml",
+      "size_bytes": 556,
+      "sha256": "d8475c6f7354a3120259869390cd69da3bfd0b359ff692a46de014715f7ad0e8"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 1152,
+      "sha256": "2c51485b62ed0fde71c25a18da23cd4cdcbd64b43afb84980b3d5c1db6917eee"
+    },
+    {
+      "path": "schema/assessment.schema.json",
+      "size_bytes": 8402,
+      "sha256": "ae6a29cf5faf1327b7fd7cf303b9d4fe85b869245554a0f3cfa9cbf283e72242"
+    },
+    {
+      "path": "scripts/check_traceability.py",
+      "size_bytes": 318,
+      "sha256": "2726cc19672b0d08a183df7bae906d3904f5b53a089e73ced01e30488d18e6a3"
+    },
+    {
+      "path": "scripts/export_catalog.py",
+      "size_bytes": 1773,
+      "sha256": "6deb0a2f42fb36b79b17b23aa72562b7a16412e0369d12bb1f08c633afcff794"
+    },
+    {
+      "path": "scripts/sync_package_data.py",
+      "size_bytes": 2279,
+      "sha256": "2355a0dca02afa31f8eb85ab6635f8d6e8500b35e31a25a40863022a78013702"
+    },
+    {
+      "path": "src/qsecat/__init__.py",
+      "size_bytes": 56,
+      "sha256": "cbdfceefffb161f9820582210bc6b2344f7572efdb769287d37c6f306e8c6f83"
+    },
+    {
+      "path": "src/qsecat/__main__.py",
+      "size_bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "src/qsecat/catalog.py",
+      "size_bytes": 10669,
+      "sha256": "8c98ae0e5c96c3dbaea5c3f1f2963796c32cf4bc2682e12cc9f828ceb4e4ae9f"
+    },
+    {
+      "path": "src/qsecat/cli.py",
+      "size_bytes": 3281,
+      "sha256": "ed6f37b2055782800dab03b143f8f3ca36cf9bb8b6641c26645081a49960f29c"
+    },
+    {
+      "path": "src/qsecat/data/catalog/assurance-levels.yaml",
+      "size_bytes": 1036,
+      "sha256": "f299982ff14ec7360a2fb1708b14d188bee3e977d5209e881f04e4140c999359"
+    },
+    {
+      "path": "src/qsecat/data/catalog/controls.yaml",
+      "size_bytes": 31902,
+      "sha256": "695c8fbe76bd446e5d8b745c18f9160136c7dd75f728b0d8a237f0575bf482f3"
+    },
+    {
+      "path": "src/qsecat/data/catalog/domains.yaml",
+      "size_bytes": 4728,
+      "sha256": "3a1aa981c4124f210e15e3363bfae39f16d3f9723bf517053c3b9dca0723e453"
+    },
+    {
+      "path": "src/qsecat/data/catalog/mappings.yaml",
+      "size_bytes": 1627,
+      "sha256": "2ad4208918734fd0a1e3b4fd66b5895e9addba45d3a8622c163f8e015a587564"
+    },
+    {
+      "path": "src/qsecat/data/catalog/profiles.yaml",
+      "size_bytes": 1412,
+      "sha256": "f02bd793d9d3619849d11484a86baab171d6c5fc7f8d7c3e94a13b0bdcd67a06"
+    },
+    {
+      "path": "src/qsecat/data/catalog/sources.yaml",
+      "size_bytes": 4852,
+      "sha256": "b3ec81a73b7e381abab06c9104cce206656bf1622e2a41c5fbce827aeb1de302"
+    },
+    {
+      "path": "src/qsecat/data/catalog/tactics.yaml",
+      "size_bytes": 1962,
+      "sha256": "03a0ecc5463ab80b06b21a2c96bd89ba372d6b0f9c31b2ffffa6cc09cfce1f13"
+    },
+    {
+      "path": "src/qsecat/data/catalog/techniques.yaml",
+      "size_bytes": 44498,
+      "sha256": "00a571f7767c62a7d2f9bfba9808049192e4c27eecb630b7c669cdaffa7f6e56"
+    },
+    {
+      "path": "src/qsecat/data/catalog/tests.yaml",
+      "size_bytes": 58737,
+      "sha256": "a6d3ea4bb49dbe1944da1d5416c2bd96d44bd850f68d166b52b11b8bcda2634e"
+    },
+    {
+      "path": "src/qsecat/data/catalog/top10.yaml",
+      "size_bytes": 6579,
+      "sha256": "90e2b59ea823a7d14b27ac81b158fe29273de4c500af59b8b486734c50eb1a5f"
+    },
+    {
+      "path": "src/qsecat/data/schema/assessment.schema.json",
+      "size_bytes": 8402,
+      "sha256": "ae6a29cf5faf1327b7fd7cf303b9d4fe85b869245554a0f3cfa9cbf283e72242"
+    },
+    {
+      "path": "src/qsecat/paths.py",
+      "size_bytes": 826,
+      "sha256": "32c3ad22222ebde79618350d1ae7b17d10aebe0e7814cd5416e3064a30d0154d"
+    },
+    {
+      "path": "src/qsecat/risk.py",
+      "size_bytes": 5231,
+      "sha256": "54839a2e6f1940368c0143b9466f5496f12301d980d986c70e3e18ba055580d8"
+    },
+    {
+      "path": "src/qsecat/validate.py",
+      "size_bytes": 4029,
+      "sha256": "d20f256cd1ee07b13f75f9bcb29f0eb69449d85d77c60e5df88cd99018a184a4"
+    },
+    {
+      "path": "tests/test_catalog.py",
+      "size_bytes": 448,
+      "sha256": "740dc1f9e60276bccdd0c69a4c6f3e88890b4e844035691e5d0ff122171da3ab"
+    },
+    {
+      "path": "tests/test_risk.py",
+      "size_bytes": 2850,
+      "sha256": "258e413764ebb42b7985f1901246f91a5a55b8dec9010797046d8981680753ee"
+    },
+    {
+      "path": "tests/test_schema.py",
+      "size_bytes": 300,
+      "sha256": "ebc2051dc19fe1c78994bf946720260c5e6d776413dfd4e6de45b9bbbb79964b"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QSP-PQC
+  name: Enterprise PQC Transition
+  required_domains:
+  - QSD-01
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-04
+  - QSD-08
+- id: QSP-QKD
+  name: QKD Product or Network
+  required_domains:
+  - QSD-02
+  - QSD-03
+  - QSD-04
+  - QSD-06
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-05
+  - QSD-08
+- id: QSP-QCLOUD
+  name: Quantum Cloud Service
+  required_domains:
+  - QSD-05
+  - QSD-06
+  - QSD-07
+  - QSD-08
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-09
+- id: QSP-QHW
+  name: Quantum Hardware Laboratory
+  required_domains:
+  - QSD-05
+  - QSD-06
+  - QSD-07
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-08
+- id: QSP-QNET
+  name: Quantum Network Testbed
+  required_domains:
+  - QSD-03
+  - QSD-04
+  - QSD-06
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-02
+  - QSD-05
+  - QSD-08
+- id: QSP-QSENSE
+  name: Quantum Sensing and Metrology
+  required_domains:
+  - QSD-05
+  - QSD-06
+  - QSD-10
+  - QSD-11
+  - QSD-12
+  optional_domains:
+  - QSD-03
+  - QSD-08
+  - QSD-09
+- id: QSP-FULL
+  name: Integrated Quantum Information System
+  required_domains:
+  - QSD-01
+  - QSD-02
+  - QSD-03
+  - QSD-04
+  - QSD-05
+  - QSD-06
+  - QSD-07
+  - QSD-08
+  - QSD-09
+  - QSD-10
+  - QSD-11
+  - QSD-12
+  optional_domains: []

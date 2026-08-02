@@ -1,0 +1,26 @@
+include README.md
+include README.en.md
+include LICENSE
+include NOTICE.md
+include CITATION.cff
+include RELEASE-NOTES.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include CONTRIBUTORS.md
+include CODE_OF_CONDUCT.md
+include DCO.md
+include SECURITY.md
+include Makefile
+include Dockerfile
+include .editorconfig
+include .gitattributes
+include .gitignore
+include .github/CODEOWNERS
+recursive-include .github *.yml *.md
+recursive-include src/qsecat/data *.yaml *.json
+recursive-include docs *.md
+recursive-include examples *.yaml
+recursive-include catalog *.yaml
+recursive-include schema *.json
+recursive-include scripts *.py
+recursive-include tests *.py

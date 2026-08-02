@@ -1,0 +1,38 @@
+{
+  "assessment_id": "QSECAT-DEMO-2026-001",
+  "framework_version": "0.1.0",
+  "finding_count": 2,
+  "highest_residual_risk": 40.25,
+  "findings": [
+    {
+      "id": "FIND-PQC-001",
+      "title": "Long-lived API trust remains partially dependent on quantum-vulnerable cryptography",
+      "technique_id": "QTE-01.001",
+      "impact": 4.32,
+      "urgency": 4.0,
+      "likelihood": 3.4,
+      "mitigation_effectiveness": 0.315,
+      "base_risk": 58.75,
+      "residual_risk": 40.25,
+      "confidence": 0.72,
+      "uncertainty_low": 36.3,
+      "uncertainty_high": 44.19,
+      "severity": "high"
+    },
+    {
+      "id": "FIND-COMPILER-001",
+      "title": "Toolchain reproducibility exists but independent semantic comparison is incomplete",
+      "technique_id": "QTE-07.001",
+      "impact": 4.29,
+      "urgency": 3.0,
+      "likelihood": 3.35,
+      "mitigation_effectiveness": 0.553,
+      "base_risk": 57.46,
+      "residual_risk": 25.68,
+      "confidence": 0.73,
+      "uncertainty_low": 23.26,
+      "uncertainty_high": 28.11,
+      "severity": "moderate"
+    }
+  ]
+}

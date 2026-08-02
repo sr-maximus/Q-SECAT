@@ -1,0 +1,23 @@
+framework_version: 0.1.0
+assessment_id: QSECAT-CHANGE-ME
+title: Change me
+assessment_date: 2026-08-01
+authorization:
+  authorized: true
+  owner: Change me
+  statement: Replace with the exact written authorization and scope.
+scope:
+  description: Replace with the bounded system and purpose.
+  assets:
+    - id: ASSET-001
+      name: Change me
+      owner: Change me
+      criticality: high
+  exclusions: []
+  assumptions: []
+domain_applicability:
+  - domain_id: QSD-01
+    status: unknown
+    rationale: Assessment not completed.
+evidence: []
+findings: []

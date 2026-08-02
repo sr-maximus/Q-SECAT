@@ -1,0 +1,299 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QST-01
+  title: Quantum-vulnerable cryptography protecting long-lived data
+  description: Confidentiality or trust remains dependent on RSA, finite-field DH, ECC or other quantum-vulnerable
+    public-key mechanisms beyond the safe migration window.
+  domains:
+  - QSD-01
+  priority_outcomes:
+  - Identify data shelf life
+  - Prioritize store-now-decrypt-later exposure
+  - Migrate with verified interoperability
+  techniques:
+  - QTE-01.001
+  - QTE-01.003
+  controls:
+  - QSC-01.001
+  - QSC-01.003
+- id: QST-02
+  title: Incomplete cryptographic inventory and insufficient crypto agility
+  description: Unknown cryptographic dependencies, hard-coded algorithms or unsafe negotiation prevent timely and
+    controlled migration.
+  domains:
+  - QSD-01
+  - QSD-11
+  - QSD-12
+  priority_outcomes:
+  - Maintain CBOM/inventory
+  - Measure migration lead time
+  - Test replacement and rollback
+  techniques:
+  - QTE-01.002
+  - QTE-01.003
+  - QTE-01.004
+  - QTE-11.003
+  controls:
+  - QSC-01.002
+  - QSC-01.003
+  - QSC-01.004
+  - QSC-11.003
+- id: QST-03
+  title: Compromise of the classical control plane
+  description: IAM, API, host, orchestration, storage or telemetry compromise alters quantum operation despite sound
+    quantum primitives.
+  domains:
+  - QSD-03
+  - QSD-06
+  - QSD-08
+  - QSD-09
+  priority_outcomes:
+  - Harden identities and interfaces
+  - Separate duties
+  - Protect and monitor control integrity
+  techniques:
+  - QTE-01.004
+  - QTE-02.003
+  - QTE-03.001
+  - QTE-04.003
+  - QTE-05.003
+  - QTE-06.002
+  - QTE-06.003
+  - QTE-06.004
+  - QTE-08.001
+  - QTE-09.001
+  - QTE-09.003
+  - QTE-10.003
+  - QTE-11.002
+  - QTE-12.002
+  controls:
+  - QSC-01.004
+  - QSC-02.003
+  - QSC-03.001
+  - QSC-04.003
+  - QSC-05.003
+  - QSC-06.002
+  - QSC-06.003
+  - QSC-06.004
+  - QSC-08.001
+  - QSC-09.001
+  - QSC-09.003
+  - QSC-10.003
+  - QSC-11.002
+  - QSC-12.002
+- id: QST-04
+  title: Untrusted quantum software, compiler or circuit pipeline
+  description: Dependencies, compiler transformations, optimizers or build services leak IP or change circuit semantics.
+  domains:
+  - QSD-07
+  - QSD-09
+  - QSD-11
+  priority_outcomes:
+  - Pin and verify toolchains
+  - Reproduce transformations
+  - Protect circuit provenance
+  techniques:
+  - QTE-07.001
+  - QTE-07.002
+  - QTE-07.003
+  - QTE-07.004
+  - QTE-08.003
+  - QTE-09.002
+  - QTE-09.003
+  controls:
+  - QSC-07.001
+  - QSC-07.002
+  - QSC-07.003
+  - QSC-07.004
+  - QSC-08.003
+  - QSC-09.002
+  - QSC-09.003
+- id: QST-05
+  title: Weak isolation in shared and multi-tenant quantum services
+  description: Scheduling, co-location, residual data, shared control paths or physical effects expose one tenant
+    to another.
+  domains:
+  - QSD-05
+  - QSD-08
+  priority_outcomes:
+  - Define isolation properties
+  - Test shared-resource boundaries
+  - Monitor scheduler and tenancy
+  techniques:
+  - QTE-05.002
+  - QTE-07.002
+  - QTE-08.002
+  - QTE-08.003
+  controls:
+  - QSC-05.002
+  - QSC-07.002
+  - QSC-08.002
+  - QSC-08.003
+- id: QST-06
+  title: Calibration, noise or environment manipulation
+  description: Untrusted calibration or environmental variation silently changes performance, fidelity, measurement
+    or availability.
+  domains:
+  - QSD-05
+  - QSD-06
+  - QSD-10
+  priority_outcomes:
+  - Sign and approve calibration
+  - Baseline environment and telemetry
+  - Provide safe rollback/recovery
+  techniques:
+  - QTE-03.003
+  - QTE-05.001
+  - QTE-05.002
+  - QTE-05.003
+  - QTE-06.001
+  - QTE-06.002
+  - QTE-06.004
+  - QTE-10.001
+  - QTE-10.002
+  - QTE-12.003
+  controls:
+  - QSC-03.003
+  - QSC-05.001
+  - QSC-05.002
+  - QSC-05.003
+  - QSC-06.001
+  - QSC-06.002
+  - QSC-06.004
+  - QSC-10.001
+  - QSC-10.002
+  - QSC-12.003
+- id: QST-07
+  title: QKD authentication, implementation and trusted-node failures
+  description: Security proof assumptions fail in implementation, classical authentication, KMS, endpoint or trusted-relay
+    operation.
+  domains:
+  - QSD-02
+  - QSD-03
+  priority_outcomes:
+  - Validate complete QKD system
+  - Protect classical channels and keys
+  - Assess implementation-specific leakage
+  techniques:
+  - QTE-02.001
+  - QTE-02.002
+  - QTE-02.003
+  - QTE-02.004
+  controls:
+  - QSC-02.001
+  - QSC-02.002
+  - QSC-02.003
+  - QSC-02.004
+- id: QST-08
+  title: Opaque QRNG and key lifecycle
+  description: Uncharacterized entropy, failed health tests, unsafe conditioning or weak delivery/provenance undermine
+    keys and simulations.
+  domains:
+  - QSD-04
+  priority_outcomes:
+  - Characterize source
+  - Continuously test health
+  - Trace entropy-to-consumer lifecycle
+  techniques:
+  - QTE-04.001
+  - QTE-04.002
+  - QTE-04.003
+  - QTE-04.004
+  controls:
+  - QSC-04.001
+  - QSC-04.002
+  - QSC-04.003
+  - QSC-04.004
+- id: QST-09
+  title: Quantum network, hybrid workflow or sensing integrity and availability failures
+  description: Timing, routing, orchestration, sensor references or classical-quantum loops are manipulated or degraded.
+  domains:
+  - QSD-03
+  - QSD-09
+  - QSD-10
+  priority_outcomes:
+  - Protect synchronization and provenance
+  - Design graceful degradation
+  - Validate end-to-end decisions
+  techniques:
+  - QTE-02.004
+  - QTE-03.001
+  - QTE-03.002
+  - QTE-03.003
+  - QTE-03.004
+  - QTE-07.004
+  - QTE-08.004
+  - QTE-09.001
+  - QTE-09.002
+  - QTE-09.004
+  - QTE-10.001
+  - QTE-10.002
+  - QTE-10.003
+  controls:
+  - QSC-02.004
+  - QSC-03.001
+  - QSC-03.002
+  - QSC-03.003
+  - QSC-03.004
+  - QSC-07.004
+  - QSC-08.004
+  - QSC-09.001
+  - QSC-09.002
+  - QSC-09.004
+  - QSC-10.001
+  - QSC-10.002
+  - QSC-10.003
+- id: QST-10
+  title: Supply-chain, lifecycle and assurance gaps
+  description: Untrusted components, unsupported dependencies, weak updates or unsubstantiated claims create hidden
+    systemic risk.
+  domains:
+  - QSD-05
+  - QSD-06
+  - QSD-07
+  - QSD-11
+  - QSD-12
+  priority_outcomes:
+  - Verify provenance and updates
+  - Plan support and exit
+  - Build evidence-based assurance cases
+  techniques:
+  - QTE-03.004
+  - QTE-04.001
+  - QTE-05.004
+  - QTE-06.003
+  - QTE-07.003
+  - QTE-08.004
+  - QTE-09.004
+  - QTE-10.004
+  - QTE-11.001
+  - QTE-11.002
+  - QTE-11.003
+  - QTE-11.004
+  - QTE-12.001
+  - QTE-12.002
+  - QTE-12.003
+  - QTE-12.004
+  controls:
+  - QSC-03.004
+  - QSC-04.001
+  - QSC-05.004
+  - QSC-06.003
+  - QSC-07.003
+  - QSC-08.004
+  - QSC-09.004
+  - QSC-10.004
+  - QSC-11.001
+  - QSC-11.002
+  - QSC-11.003
+  - QSC-11.004
+  - QSC-12.001
+  - QSC-12.002
+  - QSC-12.003
+  - QSC-12.004

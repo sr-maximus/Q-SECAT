@@ -1,0 +1,1591 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QTE-01.001
+  title: Long-lived data protected by quantum-vulnerable public-key cryptography
+  domain: QSD-01
+  tactics:
+  - QTA-09
+  description: Sensitive data, trust anchors or signatures remain dependent on public-key mechanisms whose security
+    would be materially reduced by a relevant quantum capability.
+  preconditions:
+  - Quantum-vulnerable mechanism is in use
+  - Confidentiality or authenticity must outlive migration window
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - privacy_ip
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - RSA/ECC/DH identifiers
+  - long certificate or data retention
+  - no migration owner
+  top10:
+  - QST-01
+  mitigated_by:
+  - QSC-01.001
+  tested_by:
+  - QSTEST-01.001
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-MOSCA
+  - SRC-CYCLONEDX-CBOM
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-01.002
+  title: Cryptographic inventory and dependency blind spots
+  domain: QSD-01
+  tactics:
+  - QTA-01
+  - QTA-11
+  description: Algorithms, keys, certificates, libraries, hardware or protocol dependencies are absent, stale or
+    disconnected from business assets.
+  preconditions:
+  - Distributed or third-party cryptographic use
+  - Inventory relies on manual assertions only
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - unowned certificates
+  - unknown library versions
+  - inventory drift
+  - undocumented embedded crypto
+  top10:
+  - QST-02
+  mitigated_by:
+  - QSC-01.002
+  tested_by:
+  - QSTEST-01.002
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-CYCLONEDX-CBOM
+  - SRC-QRAMM
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-01.003
+  title: PQC migration interoperability or performance failure
+  domain: QSD-01
+  tactics:
+  - QTA-12
+  description: A post-quantum or hybrid change causes protocol incompatibility, excessive resource consumption,
+    unsafe fallback or operational disruption.
+  preconditions:
+  - PQC/hybrid implementation introduced
+  - Peers, devices or protocols have heterogeneous support
+  potential_impacts:
+  - availability
+  - integrity
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - handshake failures
+  - message-size errors
+  - latency regression
+  - fallback to legacy algorithm
+  top10:
+  - QST-01
+  - QST-02
+  mitigated_by:
+  - QSC-01.003
+  tested_by:
+  - QSTEST-01.003
+  references:
+  - SRC-NIST-FIPS203
+  - SRC-NIST-FIPS204
+  - SRC-NIST-FIPS205
+  - SRC-OQS
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-01.004
+  title: Crypto-agility downgrade, rollback or policy bypass
+  domain: QSD-01
+  tactics:
+  - QTA-04
+  - QTA-09
+  - QTA-11
+  description: Algorithm selection, negotiation, configuration or rollback allows unauthorized reversion, weak combinations
+    or inconsistent policy enforcement.
+  preconditions:
+  - Multiple algorithms/profiles supported
+  - Configuration or negotiation is remotely or administratively mutable
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  evidence_status: established-classical
+  observables:
+  - policy drift
+  - weak negotiated profile
+  - unsigned crypto policy
+  - uncontrolled rollback
+  top10:
+  - QST-02
+  - QST-03
+  mitigated_by:
+  - QSC-01.004
+  tested_by:
+  - QSTEST-01.004
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-NIST-MIGRATION
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-02.001
+  title: Unauthenticated classical channel or weak key confirmation in QKD
+  domain: QSD-02
+  tactics:
+  - QTA-09
+  - QTA-10
+  description: QKD endpoints do not adequately authenticate classical protocol messages, peer identity or final
+    key association, enabling man-in-the-middle or key-binding failures.
+  preconditions:
+  - QKD protocol depends on classical communication
+  - Authentication or key confirmation is absent, weak or misconfigured
+  potential_impacts:
+  - confidentiality
+  - integrity
+  evidence_status: documented-implementation-class
+  observables:
+  - missing authentication evidence
+  - shared credentials without rotation
+  - ambiguous peer/key identifiers
+  top10:
+  - QST-07
+  mitigated_by:
+  - QSC-02.001
+  tested_by:
+  - QSTEST-02.001
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1711
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-02.002
+  title: QKD source, detector or implementation side-channel deviation
+  domain: QSD-02
+  tactics:
+  - QTA-08
+  - QTA-10
+  description: Real devices diverge from security-model assumptions through optical, electronic, timing or processing
+    behavior that leaks information or changes detection statistics.
+  preconditions:
+  - Physical QKD modules deployed
+  - Security proof relies on bounded implementation characteristics
+  potential_impacts:
+  - confidentiality
+  - integrity
+  evidence_status: documented-implementation-class
+  observables:
+  - uncharacterized component behavior
+  - unexpected detection statistics
+  - missing tamper or side-channel evaluation
+  top10:
+  - QST-07
+  mitigated_by:
+  - QSC-02.002
+  tested_by:
+  - QSTEST-02.002
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-02.003
+  title: Trusted-node, KMS or key-relay compromise
+  domain: QSD-02
+  tactics:
+  - QTA-04
+  - QTA-09
+  - QTA-10
+  description: A trusted relay, key management service, operator or delivery interface exposes, misroutes, reuses
+    or substitutes QKD-derived keys.
+  preconditions:
+  - Network uses trusted nodes or centralized KMS
+  - Key material crosses classical storage or management components
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  evidence_status: established-classical
+  observables:
+  - plaintext key exposure paths
+  - overprivileged operators
+  - weak key identifiers
+  - unprotected KMS API
+  top10:
+  - QST-03
+  - QST-07
+  mitigated_by:
+  - QSC-02.003
+  tested_by:
+  - QSTEST-02.003
+  references:
+  - SRC-ETSI-QKD014
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-NSA-QKD
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-02.004
+  title: QKD availability degradation or secret-key-rate exhaustion
+  domain: QSD-02
+  tactics:
+  - QTA-10
+  - QTA-12
+  description: Channel conditions, control failures, resource pressure or adversarial interference reduce key rate
+    below application demand or cause unstable service.
+  preconditions:
+  - Application availability depends on QKD key supply
+  - Capacity/fallback policy is insufficient
+  potential_impacts:
+  - availability
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - falling secret key rate
+  - queue growth
+  - repeated resynchronization
+  - uncontrolled application fallback
+  top10:
+  - QST-07
+  - QST-09
+  mitigated_by:
+  - QSC-02.004
+  tested_by:
+  - QSTEST-02.004
+  references:
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1710
+  - SRC-NSA-QKD
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-03.001
+  title: Quantum-network control, routing or orchestration compromise
+  domain: QSD-03
+  tactics:
+  - QTA-04
+  - QTA-10
+  description: Classical controllers or orchestrators alter path selection, resource allocation, policy or service
+    state for quantum links.
+  preconditions:
+  - Software-defined or orchestrated quantum network
+  - Controller has broad authority
+  potential_impacts:
+  - integrity
+  - availability
+  - confidentiality
+  evidence_status: established-classical
+  observables:
+  - unauthorized topology changes
+  - policy mismatch
+  - unattributed controller actions
+  top10:
+  - QST-03
+  - QST-09
+  mitigated_by:
+  - QSC-03.001
+  tested_by:
+  - QSTEST-03.001
+  references:
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-03.002
+  title: Entanglement, repeater or quantum-memory resource manipulation
+  domain: QSD-03
+  tactics:
+  - QTA-07
+  - QTA-10
+  - QTA-12
+  description: Allocation, quality, state lifetime or service metadata for entanglement/repeater/memory resources
+    is corrupted, withheld or misrepresented.
+  preconditions:
+  - Network exposes shared quantum resources
+  - Quality and provenance are used for routing or decisions
+  potential_impacts:
+  - integrity
+  - availability
+  evidence_status: plausible-research
+  observables:
+  - quality/provenance mismatch
+  - unexpected resource starvation
+  - inconsistent service metadata
+  top10:
+  - QST-09
+  mitigated_by:
+  - QSC-03.002
+  tested_by:
+  - QSTEST-03.002
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-03.003
+  title: Quantum/classical synchronization and timing manipulation
+  domain: QSD-03
+  tactics:
+  - QTA-05
+  - QTA-10
+  - QTA-12
+  description: Compromised time, synchronization or event ordering causes invalid protocol association, degraded
+    fidelity or incorrect measurement correlation.
+  preconditions:
+  - Protocol depends on tight timing or synchronized classical metadata
+  - Reference source or distribution path can fail or be spoofed
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - clock offset anomalies
+  - event-window mismatch
+  - resynchronization bursts
+  top10:
+  - QST-06
+  - QST-09
+  mitigated_by:
+  - QSC-03.003
+  tested_by:
+  - QSTEST-03.003
+  references:
+  - SRC-ITU-Y3800
+  - SRC-ITU-X1710
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-03.004
+  title: Transduction or quantum/classical boundary failure
+  domain: QSD-03
+  tactics:
+  - QTA-08
+  - QTA-10
+  - QTA-12
+  description: Interfaces converting between media, frequencies or quantum/classical representations leak, corrupt,
+    mislabel or lose state and metadata.
+  preconditions:
+  - System uses transducers or heterogeneous quantum links
+  - Boundary assumptions are not independently checked
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  evidence_status: plausible-research
+  observables:
+  - conversion loss anomaly
+  - metadata mismatch
+  - unexplained quality degradation
+  top10:
+  - QST-09
+  - QST-10
+  mitigated_by:
+  - QSC-03.004
+  tested_by:
+  - QSTEST-03.004
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-04.001
+  title: Opaque or unsupported quantum entropy-source claims
+  domain: QSD-04
+  tactics:
+  - QTA-11
+  - QTA-09
+  description: A QRNG is described as quantum or true-random without sufficient source model, min-entropy estimate,
+    operating assumptions or independent evidence.
+  preconditions:
+  - Security relies on QRNG output
+  - Source characterization is absent or proprietary without assurance evidence
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - privacy_ip
+  evidence_status: documented-implementation-class
+  observables:
+  - marketing-only claim
+  - no raw-source model
+  - no entropy estimate or validation scope
+  top10:
+  - QST-08
+  - QST-10
+  mitigated_by:
+  - QSC-04.001
+  tested_by:
+  - QSTEST-04.001
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-04.002
+  title: QRNG health-test, conditioning or digitization failure
+  domain: QSD-04
+  tactics:
+  - QTA-05
+  - QTA-09
+  - QTA-12
+  description: Source degradation, digitizer bias, conditioning fault or ineffective online health testing reduces
+    entropy without timely detection.
+  preconditions:
+  - Physical entropy source is variable
+  - Monitoring or failure behavior is incomplete
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  evidence_status: documented-implementation-class
+  observables:
+  - health-test alerts suppressed
+  - distribution shift
+  - repeated values
+  - environmental correlation
+  top10:
+  - QST-08
+  mitigated_by:
+  - QSC-04.002
+  tested_by:
+  - QSTEST-04.002
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-04.003
+  title: Entropy-path API substitution, injection or provenance loss
+  domain: QSD-04
+  tactics:
+  - QTA-04
+  - QTA-09
+  - QTA-11
+  description: Software, driver, API or service routing silently replaces the intended entropy source, mixes unapproved
+    data or loses provenance.
+  preconditions:
+  - QRNG output traverses drivers/services
+  - Consumers cannot attest source and processing path
+  potential_impacts:
+  - confidentiality
+  - integrity
+  evidence_status: established-classical
+  observables:
+  - unexpected provider identifier
+  - unsigned driver/config
+  - fallback source not logged
+  top10:
+  - QST-03
+  - QST-08
+  mitigated_by:
+  - QSC-04.003
+  tested_by:
+  - QSTEST-04.003
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+  - SRC-CYCLONEDX-CBOM
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-04.004
+  title: Randomness-derived key lifecycle and uniqueness failure
+  domain: QSD-04
+  tactics:
+  - QTA-09
+  description: Even adequate entropy is undermined by key derivation, reuse, storage, distribution, rotation or
+    destruction defects.
+  preconditions:
+  - Keys/tokens are derived from QRNG/RBG
+  - Lifecycle controls are fragmented
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - duplicate key IDs
+  - unexpected key reuse
+  - excessive retention
+  - unclear derivation context
+  top10:
+  - QST-08
+  mitigated_by:
+  - QSC-04.004
+  tested_by:
+  - QSTEST-04.004
+  references:
+  - SRC-NIST-ENTROPY
+  - SRC-ETSI-QRNG
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-05.001
+  title: Environmental perturbation degrades quantum operation
+  domain: QSD-05
+  tactics:
+  - QTA-05
+  - QTA-12
+  description: Temperature, vibration, electromagnetic, optical, vacuum or other environmental conditions move hardware
+    outside its validated operating envelope.
+  preconditions:
+  - Quantum hardware is environmentally sensitive
+  - Monitoring or access control is incomplete
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - correlated fidelity/measurement drift
+  - environmental alarm
+  - unexpected recalibration frequency
+  top10:
+  - QST-06
+  mitigated_by:
+  - QSC-05.001
+  tested_by:
+  - QSTEST-05.001
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-05.002
+  title: Crosstalk or shared physical resource interference
+  domain: QSD-05
+  tactics:
+  - QTA-07
+  - QTA-08
+  - QTA-12
+  description: Co-located workloads or shared hardware effects influence another job, disclose workload characteristics
+    or degrade result quality.
+  preconditions:
+  - Shared QPU or control resources
+  - Scheduler permits co-location or temporal adjacency
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: demonstrated-lab
+  observables:
+  - tenant-correlated error shift
+  - schedule-dependent fidelity
+  - unexpected resource coupling
+  top10:
+  - QST-05
+  - QST-06
+  mitigated_by:
+  - QSC-05.002
+  tested_by:
+  - QSTEST-05.002
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-05.003
+  title: Unauthorized access to QPU support infrastructure
+  domain: QSD-05
+  tactics:
+  - QTA-03
+  - QTA-04
+  - QTA-05
+  description: An actor reaches laboratory consoles, cryogenic/optical controls, maintenance ports or support systems
+    beyond their approved role.
+  preconditions:
+  - Support infrastructure has network or physical access paths
+  - Segmentation or privilege control is weak
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - shared admin credentials
+  - flat laboratory network
+  - unmonitored maintenance session
+  top10:
+  - QST-03
+  - QST-06
+  mitigated_by:
+  - QSC-05.003
+  tested_by:
+  - QSTEST-05.003
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-05.004
+  title: Quantum hardware IP leakage, tampering or provenance failure
+  domain: QSD-05
+  tactics:
+  - QTA-02
+  - QTA-08
+  - QTA-11
+  description: Design, component, fabrication, maintenance or diagnostic information is exposed or altered, or hardware
+    identity cannot be verified.
+  preconditions:
+  - Multiple suppliers/maintainers
+  - Sensitive design/calibration artifacts cross boundaries
+  potential_impacts:
+  - integrity
+  - availability
+  - privacy_ip
+  - regulatory_sovereignty
+  evidence_status: documented-implementation-class
+  observables:
+  - untraceable component
+  - unsigned diagnostic image
+  - uncontrolled design export
+  - serial/provenance mismatch
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-05.004
+  tested_by:
+  - QSTEST-05.004
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-06.001
+  title: Calibration data poisoning or malicious miscalibration
+  domain: QSD-06
+  tactics:
+  - QTA-05
+  - QTA-06
+  - QTA-11
+  description: Calibration inputs, models, results or approvals are altered so the device operates with inaccurate
+    parameters or misleading quality claims.
+  preconditions:
+  - Frequent calibration or third-party calibration service
+  - Calibration data influences compilation/execution decisions
+  potential_impacts:
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: demonstrated-lab
+  observables:
+  - unexplained parameter jump
+  - unsigned calibration set
+  - quality claims inconsistent with independent checks
+  top10:
+  - QST-06
+  mitigated_by:
+  - QSC-06.001
+  tested_by:
+  - QSTEST-06.001
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-06.002
+  title: Control pulse or waveform tampering
+  domain: QSD-06
+  tactics:
+  - QTA-04
+  - QTA-05
+  - QTA-06
+  description: Waveform definitions, pulse libraries or transport are modified so logical operations differ from
+    authorized intent.
+  preconditions:
+  - Programmable control electronics
+  - Waveforms can be updated or transported through classical systems
+  potential_impacts:
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: plausible-research
+  observables:
+  - hash/version mismatch
+  - unexpected pulse-library change
+  - gate behavior outside baseline
+  top10:
+  - QST-03
+  - QST-06
+  mitigated_by:
+  - QSC-06.002
+  tested_by:
+  - QSTEST-06.002
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-06.003
+  title: Firmware, microcode or FPGA compromise
+  domain: QSD-06
+  tactics:
+  - QTA-02
+  - QTA-03
+  - QTA-04
+  - QTA-11
+  description: Low-level control software is malicious, vulnerable, unsigned or modified through an update or maintenance
+    channel.
+  preconditions:
+  - Programmable controllers/FPGA/firmware
+  - Update chain is not strongly verified
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - unsigned image
+  - unknown build provenance
+  - debug interface enabled
+  - unreviewed emergency update
+  top10:
+  - QST-03
+  - QST-10
+  mitigated_by:
+  - QSC-06.003
+  tested_by:
+  - QSTEST-06.003
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-06.004
+  title: Telemetry, logging or baseline manipulation
+  domain: QSD-06
+  tactics:
+  - QTA-04
+  - QTA-11
+  description: Security-relevant calibration, environment, job or quality telemetry is absent, altered, delayed
+    or selectively suppressed.
+  preconditions:
+  - Detection/assurance depends on classical telemetry
+  - Logging authority overlaps with system administration
+  potential_impacts:
+  - integrity
+  - availability
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - time gaps
+  - inconsistent source clocks
+  - mutable local-only logs
+  - baseline changed without approval
+  top10:
+  - QST-03
+  - QST-06
+  mitigated_by:
+  - QSC-06.004
+  tested_by:
+  - QSTEST-06.004
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-07.001
+  title: Malicious or untrusted compiler/transpiler transformation
+  domain: QSD-07
+  tactics:
+  - QTA-06
+  - QTA-11
+  description: Compilation, mapping or optimization changes circuit semantics, inserts unwanted operations, degrades
+    output or encodes information leakage.
+  preconditions:
+  - Third-party or opaque toolchain
+  - Circuit transformations not independently checked
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: demonstrated-lab
+  observables:
+  - semantic mismatch
+  - unexpected gate insertion
+  - non-reproducible compiled circuit
+  top10:
+  - QST-04
+  mitigated_by:
+  - QSC-07.001
+  tested_by:
+  - QSTEST-07.001
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-07.002
+  title: Quantum circuit or algorithm IP theft and reconstruction
+  domain: QSD-07
+  tactics:
+  - QTA-08
+  description: Circuit structure, parameters, optimization choices or job metadata reveal proprietary algorithms,
+    models or business intent.
+  preconditions:
+  - Sensitive workloads sent to external/shared service
+  - Provider or observer sees circuit/job metadata
+  potential_impacts:
+  - confidentiality
+  - privacy_ip
+  evidence_status: documented-implementation-class
+  observables:
+  - excessive provider-visible metadata
+  - long retention
+  - broad support access
+  top10:
+  - QST-04
+  - QST-05
+  mitigated_by:
+  - QSC-07.002
+  tested_by:
+  - QSTEST-07.002
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-07.003
+  title: Dependency, package or build-pipeline compromise
+  domain: QSD-07
+  tactics:
+  - QTA-02
+  - QTA-03
+  - QTA-11
+  description: A quantum SDK, plugin, native library, container, notebook or build service introduces malicious
+    or vulnerable code.
+  preconditions:
+  - External dependencies or dynamic packages
+  - Weak provenance and CI controls
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - unpinned dependency
+  - unsigned package
+  - unreviewed build action
+  - secret in notebook
+  top10:
+  - QST-04
+  - QST-10
+  mitigated_by:
+  - QSC-07.003
+  tested_by:
+  - QSTEST-07.003
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-OQS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-07.004
+  title: Quantum result integrity or reproducibility manipulation
+  domain: QSD-07
+  tactics:
+  - QTA-06
+  - QTA-11
+  - QTA-12
+  description: Returned measurements, metadata, post-processing or backend identity are altered or insufficiently
+    recorded to validate a result.
+  preconditions:
+  - External backend or multi-stage result processing
+  - No reproducibility manifest or cross-check
+  potential_impacts:
+  - integrity
+  - safety_mission
+  - privacy_ip
+  evidence_status: documented-implementation-class
+  observables:
+  - missing backend/calibration ID
+  - result hash mismatch
+  - unexplained distribution change
+  top10:
+  - QST-04
+  - QST-09
+  mitigated_by:
+  - QSC-07.004
+  tested_by:
+  - QSTEST-07.004
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-08.001
+  title: Quantum-cloud API, identity or session compromise
+  domain: QSD-08
+  tactics:
+  - QTA-03
+  - QTA-04
+  description: Stolen credentials, weak authorization, insecure API or session handling permits unauthorized job,
+    data, backend or administrative access.
+  preconditions:
+  - Remote cloud/API access
+  - Identity controls not proportional to impact
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - long-lived token
+  - overbroad API scope
+  - no strong authentication
+  - unattributed service account
+  top10:
+  - QST-03
+  mitigated_by:
+  - QSC-08.001
+  tested_by:
+  - QSTEST-08.001
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-08.002
+  title: Tenant isolation, scheduling or residual-data leakage
+  domain: QSD-08
+  tactics:
+  - QTA-07
+  - QTA-08
+  description: Shared queues, storage, caches, scheduler metadata or backend state expose information or influence
+    another tenant.
+  preconditions:
+  - Multi-tenant quantum service
+  - Isolation objective is unspecified or untested
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - privacy_ip
+  evidence_status: demonstrated-lab
+  observables:
+  - cross-tenant identifier exposure
+  - schedule correlation
+  - residual job artifact
+  - shared error shift
+  top10:
+  - QST-05
+  mitigated_by:
+  - QSC-08.002
+  tested_by:
+  - QSTEST-08.002
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-08.003
+  title: Job, input, parameter or result confidentiality leakage
+  domain: QSD-08
+  tactics:
+  - QTA-08
+  - QTA-11
+  description: Cloud logs, support tools, object storage, notebooks or result services expose sensitive job content
+    or derived information.
+  preconditions:
+  - Sensitive data enters cloud workflow
+  - Logging/retention/access are broad
+  potential_impacts:
+  - confidentiality
+  - privacy_ip
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - payload in logs
+  - public/overbroad object ACL
+  - support export without minimization
+  top10:
+  - QST-04
+  - QST-05
+  mitigated_by:
+  - QSC-08.003
+  tested_by:
+  - QSTEST-08.003
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-08.004
+  title: Provider concentration, region or service-continuity dependency
+  domain: QSD-08
+  tactics:
+  - QTA-12
+  description: A single provider, backend, region, account or proprietary interface creates unacceptable outage,
+    lock-in, data-residency or exit risk.
+  preconditions:
+  - Critical workflow depends on external quantum service
+  - No tested alternate or degraded mode
+  potential_impacts:
+  - availability
+  - safety_mission
+  - regulatory_sovereignty
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - single backend dependency
+  - no export format
+  - undefined provider incident notification
+  top10:
+  - QST-09
+  - QST-10
+  mitigated_by:
+  - QSC-08.004
+  tested_by:
+  - QSTEST-08.004
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QRAMM
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-09.001
+  title: Classical optimizer or orchestration-state tampering
+  domain: QSD-09
+  tactics:
+  - QTA-04
+  - QTA-06
+  - QTA-11
+  description: Parameters, objective values, stopping criteria or iterative workflow state are altered outside the
+    quantum backend, producing manipulated convergence or decisions.
+  preconditions:
+  - Variational or iterative hybrid workflow
+  - Classical state is mutable across services
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - parameter history gap
+  - objective inconsistency
+  - unauthorized workflow change
+  top10:
+  - QST-03
+  - QST-09
+  mitigated_by:
+  - QSC-09.001
+  tested_by:
+  - QSTEST-09.001
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-09.002
+  title: Training-data, feature or label poisoning in quantum ML
+  domain: QSD-09
+  tactics:
+  - QTA-06
+  - QTA-11
+  description: Data or preprocessing changes bias a quantum or hybrid model while avoiding normal quality checks.
+  preconditions:
+  - QML or quantum-enhanced model uses external/mutable data
+  - Dataset provenance is weak
+  potential_impacts:
+  - integrity
+  - privacy_ip
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - dataset lineage gap
+  - unexpected feature distribution
+  - performance shift by source segment
+  top10:
+  - QST-04
+  - QST-09
+  mitigated_by:
+  - QSC-09.002
+  tested_by:
+  - QSTEST-09.002
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-09.003
+  title: Serialization, parameter or protocol injection at hybrid interfaces
+  domain: QSD-09
+  tactics:
+  - QTA-03
+  - QTA-04
+  - QTA-06
+  description: Malformed or unauthorized circuit, parameter, measurement or metadata objects alter workflow behavior
+    at quantum/classical service boundaries.
+  preconditions:
+  - Multiple services exchange structured job objects
+  - Validation and authorization are inconsistent
+  potential_impacts:
+  - integrity
+  - availability
+  - confidentiality
+  evidence_status: established-classical
+  observables:
+  - schema bypass
+  - unexpected field accepted
+  - unsafe deserialization
+  - parameter outside policy
+  top10:
+  - QST-03
+  - QST-04
+  mitigated_by:
+  - QSC-09.003
+  tested_by:
+  - QSTEST-09.003
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-09.004
+  title: Hybrid provenance gap corrupts downstream decisions
+  domain: QSD-09
+  tactics:
+  - QTA-06
+  - QTA-11
+  description: A business, scientific or safety decision cannot be traced to the exact data, circuit, backend, calibration,
+    model and post-processing that produced it.
+  preconditions:
+  - Quantum output informs material decision
+  - Evidence is fragmented across services
+  potential_impacts:
+  - integrity
+  - safety_mission
+  - regulatory_sovereignty
+  evidence_status: documented-implementation-class
+  observables:
+  - missing run ID
+  - unversioned model
+  - manual result copy
+  - decision record lacks source manifest
+  top10:
+  - QST-09
+  - QST-10
+  mitigated_by:
+  - QSC-09.004
+  tested_by:
+  - QSTEST-09.004
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-10.001
+  title: Quantum sensor spoofing or environmental manipulation
+  domain: QSD-10
+  tactics:
+  - QTA-05
+  - QTA-06
+  - QTA-12
+  description: External conditions or input signals cause a quantum sensor to report a plausible but incorrect state
+    or reduce sensitivity.
+  preconditions:
+  - Sensor informs navigation, detection, timing or control
+  - Environment/input authenticity is not independently checked
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: plausible-research
+  observables:
+  - measurement/reference disagreement
+  - location/environment correlated bias
+  - unexpected sensitivity loss
+  top10:
+  - QST-06
+  - QST-09
+  mitigated_by:
+  - QSC-10.001
+  tested_by:
+  - QSTEST-10.001
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-10.002
+  title: Timing, clock or reference manipulation in quantum metrology
+  domain: QSD-10
+  tactics:
+  - QTA-05
+  - QTA-10
+  - QTA-12
+  description: Reference source, distribution, synchronization or holdover is altered, creating incorrect time/frequency
+    or correlated measurements.
+  preconditions:
+  - System depends on quantum clock/reference
+  - Reference trust and redundancy are insufficient
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - reference divergence
+  - holdover anomaly
+  - unexpected phase/frequency correction
+  top10:
+  - QST-06
+  - QST-09
+  mitigated_by:
+  - QSC-10.002
+  tested_by:
+  - QSTEST-10.002
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-10.003
+  title: Measurement data integrity or provenance failure
+  domain: QSD-10
+  tactics:
+  - QTA-04
+  - QTA-06
+  - QTA-11
+  description: Raw measurements, calibration corrections, aggregation or metadata are altered or cannot be traced
+    to a sensor and time context.
+  preconditions:
+  - Measurement travels through classical pipelines
+  - Integrity and lineage are incomplete
+  potential_impacts:
+  - integrity
+  - safety_mission
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - missing calibration ID
+  - editable raw data
+  - timestamp/source mismatch
+  top10:
+  - QST-03
+  - QST-09
+  mitigated_by:
+  - QSC-10.003
+  tested_by:
+  - QSTEST-10.003
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-10.004
+  title: Unauthorized use or disclosure of sensitive quantum-sensing capability
+  domain: QSD-10
+  tactics:
+  - QTA-03
+  - QTA-08
+  description: Access to high-sensitivity measurements, operating parameters or capabilities enables privacy, IP,
+    strategic or policy harm outside approved use.
+  preconditions:
+  - Sensor capability or data is sensitive
+  - Authorization and purpose controls are weak
+  potential_impacts:
+  - confidentiality
+  - privacy_ip
+  - regulatory_sovereignty
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - broad raw-data access
+  - unapproved export
+  - purpose/retention not recorded
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-10.004
+  tested_by:
+  - QSTEST-10.004
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-11.001
+  title: Counterfeit, substituted or untrusted component
+  domain: QSD-11
+  tactics:
+  - QTA-02
+  - QTA-11
+  description: Hardware, optical, electronic or software component identity, origin or properties differ from approved
+    specification.
+  preconditions:
+  - Complex multi-tier supply chain
+  - Weak receipt/acceptance verification
+  potential_impacts:
+  - integrity
+  - availability
+  - safety_mission
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - serial/provenance mismatch
+  - unexpected firmware/version
+  - supplier documentation gap
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-11.001
+  tested_by:
+  - QSTEST-11.001
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-11.002
+  title: Update-signing, release-provenance or maintenance-channel failure
+  domain: QSD-11
+  tactics:
+  - QTA-02
+  - QTA-03
+  - QTA-11
+  description: Software, firmware, calibration or configuration updates can be forged, replayed, downgraded or delivered
+    through an untrusted maintenance path.
+  preconditions:
+  - Remote/on-site updates exist
+  - Trust anchors, signing or anti-rollback are weak
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - unsigned update
+  - expired/unknown signer
+  - rollback accepted
+  - vendor remote access unmonitored
+  top10:
+  - QST-03
+  - QST-10
+  mitigated_by:
+  - QSC-11.002
+  tested_by:
+  - QSTEST-11.002
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-HW-PRIMER
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-11.003
+  title: Dependency obsolescence or unsupported lifecycle
+  domain: QSD-11
+  tactics:
+  - QTA-12
+  description: A critical quantum/classical component cannot be patched, replaced, validated or supported for the
+    required system lifetime.
+  preconditions:
+  - Long-lived specialized hardware/software
+  - Vendor roadmap or interfaces are proprietary
+  potential_impacts:
+  - availability
+  - integrity
+  - regulatory_sovereignty
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - end-of-support date precedes mission end
+  - no replacement path
+  - unavailable build/toolchain
+  top10:
+  - QST-02
+  - QST-10
+  mitigated_by:
+  - QSC-11.003
+  tested_by:
+  - QSTEST-11.003
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-QRAMM
+  - SRC-CYCLONEDX-CBOM
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-11.004
+  title: Third-party concentration, hidden subcontractor or exit failure
+  domain: QSD-11
+  tactics:
+  - QTA-02
+  - QTA-12
+  description: Undisclosed dependencies, concentrated capability or weak contractual exit/incident terms create
+    systemic availability, confidentiality or sovereignty risk.
+  preconditions:
+  - Critical managed service or specialist supplier
+  - Limited substitute market or transparency
+  potential_impacts:
+  - availability
+  - confidentiality
+  - regulatory_sovereignty
+  - privacy_ip
+  evidence_status: established-classical
+  observables:
+  - unknown subcontractor
+  - no incident SLA
+  - no secure export/destruction proof
+  - single qualified maintainer
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-11.004
+  tested_by:
+  - QSTEST-11.004
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-12.001
+  title: Unsupported quantum-security or assurance claim
+  domain: QSD-12
+  tactics:
+  - QTA-11
+  description: Terms such as quantum-safe, unhackable, certified or information-theoretically secure are used beyond
+    the scope and assumptions of available evidence.
+  preconditions:
+  - Product/organization makes security claims
+  - Evidence scope is unclear or marketing-led
+  potential_impacts:
+  - integrity
+  - regulatory_sovereignty
+  - safety_mission
+  evidence_status: documented-implementation-class
+  observables:
+  - claim lacks version/scope
+  - certification applies to different component
+  - assumptions omitted
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-12.001
+  tested_by:
+  - QSTEST-12.001
+  references:
+  - SRC-IEEE-P1947
+  - SRC-ISO-QKD1
+  - SRC-ETSI-QKD016
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-12.002
+  title: Missing threat model, ownership or incident process
+  domain: QSD-12
+  tactics:
+  - QTA-11
+  - QTA-12
+  description: Quantum-specific assets and failure modes have no accountable owner, detection path, response playbook
+    or risk-acceptance authority.
+  preconditions:
+  - Emerging quantum pilot or production system
+  - Governance inherited from classical IT without adaptation
+  potential_impacts:
+  - confidentiality
+  - integrity
+  - availability
+  - safety_mission
+  - regulatory_sovereignty
+  evidence_status: established-classical
+  observables:
+  - unowned asset
+  - incident plan omits provider/lab
+  - no stop authority
+  - risk accepted informally
+  top10:
+  - QST-03
+  - QST-10
+  mitigated_by:
+  - QSC-12.002
+  tested_by:
+  - QSTEST-12.002
+  references:
+  - SRC-IEEE-P1947
+  - SRC-QRAMM
+  - SRC-QUASAR
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-12.003
+  title: Inadequate skills, review independence or separation of duties
+  domain: QSD-12
+  tactics:
+  - QTA-03
+  - QTA-11
+  description: Concentrated specialist access or insufficient quantum/cyber competence allows errors, insider abuse
+    or unchallenged claims.
+  preconditions:
+  - Small expert team controls design, calibration and evidence
+  - No independent review or role separation
+  potential_impacts:
+  - integrity
+  - availability
+  - privacy_ip
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - single person can create/approve/deploy
+  - training not role-specific
+  - reviewer depends on same evidence author
+  top10:
+  - QST-06
+  - QST-10
+  mitigated_by:
+  - QSC-12.003
+  tested_by:
+  - QSTEST-12.003
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
+- id: QTE-12.004
+  title: Legal, regulatory, export, privacy or data-sovereignty gap
+  domain: QSD-12
+  tactics:
+  - QTA-02
+  - QTA-11
+  description: Quantum hardware, algorithms, sensitive data, remote access or cross-border service use violates
+    or lacks assessment against applicable obligations.
+  preconditions:
+  - Cross-border cloud/supplier or sensitive technology/data
+  - Obligation inventory is incomplete
+  potential_impacts:
+  - regulatory_sovereignty
+  - privacy_ip
+  - availability
+  - safety_mission
+  evidence_status: established-classical
+  observables:
+  - unknown processing region
+  - unapproved technology transfer
+  - no retention/legal basis
+  - contract conflicts with obligation
+  top10:
+  - QST-10
+  mitigated_by:
+  - QSC-12.004
+  tested_by:
+  - QSTEST-12.004
+  references:
+  - SRC-QRAMM
+  - SRC-QUASAR
+  - SRC-IEEE-P1947
+  notes: Applicability and exploitability must be established for the assessed system; this entry is not an incident
+    claim.
