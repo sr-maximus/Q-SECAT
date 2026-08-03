@@ -1,0 +1,37 @@
+name: Q-SECAT CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install
+        run: python -m pip install -e .[dev]
+      - name: Package data drift
+        run: python scripts/sync_package_data.py --check
+      - name: Catalog traceability
+        run: python scripts/check_traceability.py
+      - name: Validate example
+        run: qsecat validate examples/assessment-example.yaml
+      - name: Score example
+        run: qsecat score examples/assessment-example.yaml
+      - name: Tests
+        run: pytest
+      - name: Lint
+        run: ruff check src tests scripts

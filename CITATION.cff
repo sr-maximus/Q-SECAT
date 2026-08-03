@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "Q-SECAT: Quantum Security Evaluation, Controls, Assurance & Testing Framework"
+message: "Please cite this software and framework using the metadata below."
+type: software
+authors:
+  - family-names: "Peñuela Camacho"
+    given-names: "Edwin Javier"
+version: 0.1.0
+date-released: 2026-08-01
+license: Apache-2.0
+abstract: >-
+  Open, evidence-oriented framework for evaluating post-quantum,
+  quantum and quantum-enabled system security through domains,
+  adversary techniques, controls, tests, assurance levels and an
+  uncertainty-aware risk model.
+keywords:
+  - quantum cybersecurity
+  - post-quantum cryptography
+  - quantum computing security
+  - quantum networks
+  - QKD
+  - QRNG
+  - security testing
+  - risk assessment
+repository-code: "https://github.com/sr-maximus/Q-SECAT"

@@ -1,0 +1,1041 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QSC-01.001
+  title: Time-bounded quantum-risk prioritization
+  domain: QSD-01
+  objective: Identify every vulnerable cryptographic use and prioritize it using data lifetime, migration lead time
+    and scenario-based threat horizon.
+  implementation_guidance:
+  - Maintain cryptographic inventory and dependency graph
+  - Record shelf life and migration estimate per asset
+  - Approve scenario assumptions and treatment dates
+  expected_evidence:
+  - CBOM or equivalent inventory
+  - data-retention classification
+  - migration roadmap
+  mitigates:
+  - QTE-01.001
+  verified_by:
+  - QSTEST-01.001
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-MOSCA
+  - SRC-CYCLONEDX-CBOM
+- id: QSC-01.002
+  title: Continuous cryptographic asset visibility
+  domain: QSD-01
+  objective: Maintain a current, attributable and dependency-aware inventory of cryptographic assets across software,
+    hardware, protocols and suppliers.
+  implementation_guidance:
+  - Generate CBOM/SBOM where possible
+  - Combine discovery sources and ownership records
+  - Define freshness, coverage and exception metrics
+  expected_evidence:
+  - signed inventory export
+  - discovery logs
+  - coverage reconciliation report
+  mitigates:
+  - QTE-01.002
+  verified_by:
+  - QSTEST-01.002
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-CYCLONEDX-CBOM
+  - SRC-QRAMM
+- id: QSC-01.003
+  title: Verified PQC interoperability and capacity
+  domain: QSD-01
+  objective: Demonstrate functional, security and performance suitability of approved PQC/hybrid mechanisms across
+    representative environments.
+  implementation_guidance:
+  - Use approved NIST algorithms and validated implementations where required
+  - Test protocol limits and constrained devices
+  - Set explicit fallback and rollback policy
+  expected_evidence:
+  - compatibility matrix
+  - performance baseline
+  - failure and rollback test record
+  mitigates:
+  - QTE-01.003
+  verified_by:
+  - QSTEST-01.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-NIST-FIPS203
+  - SRC-NIST-FIPS204
+  - SRC-NIST-FIPS205
+  - SRC-OQS
+- id: QSC-01.004
+  title: Controlled cryptographic agility
+  domain: QSD-01
+  objective: Make cryptographic replacement possible without permitting unauthorized downgrade, ambiguous negotiation
+    or unverified rollback.
+  implementation_guidance:
+  - Centralize versioned cryptographic policy
+  - Authenticate configuration and changes
+  - Define fail-safe negotiation and emergency rollback controls
+  expected_evidence:
+  - policy-as-code
+  - change approvals
+  - negotiation telemetry
+  - rollback exercise
+  mitigates:
+  - QTE-01.004
+  verified_by:
+  - QSTEST-01.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-NIST-MIGRATION
+- id: QSC-02.001
+  title: Authenticated QKD protocol and key binding
+  domain: QSD-02
+  objective: Protect all required classical QKD exchanges and bind generated key material to authenticated endpoints,
+    context and lifecycle metadata.
+  implementation_guidance:
+  - Use approved authentication mechanisms
+  - Protect initial trust material and rotations
+  - Confirm peer, key ID, status and consumer binding
+  expected_evidence:
+  - protocol design
+  - authentication configuration
+  - key metadata and logs
+  mitigates:
+  - QTE-02.001
+  verified_by:
+  - QSTEST-02.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1711
+- id: QSC-02.002
+  title: Implementation-aware QKD assurance
+  domain: QSD-02
+  objective: Validate that QKD modules satisfy the implementation assumptions and security functional requirements
+    claimed for the deployed protocol.
+  implementation_guidance:
+  - Document security model and device assumptions
+  - Use applicable protection profiles and evaluation methods
+  - Monitor operational parameters against approved envelopes
+  expected_evidence:
+  - device characterization
+  - evaluation report
+  - operating-envelope telemetry
+  mitigates:
+  - QTE-02.002
+  verified_by:
+  - QSTEST-02.002
+  minimum_recommended_qal: QAL-4
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+- id: QSC-02.003
+  title: End-to-end QKD key lifecycle protection
+  domain: QSD-02
+  objective: Protect key material and metadata from generation through relay, delivery, consumption, rotation and
+    destruction.
+  implementation_guidance:
+  - Define trusted-node threat model
+  - Use least privilege and separation of duties
+  - Authenticate key-delivery APIs and prevent reuse/substitution
+  expected_evidence:
+  - data-flow diagram
+  - KMS access controls
+  - key lifecycle audit trail
+  mitigates:
+  - QTE-02.003
+  verified_by:
+  - QSTEST-02.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ETSI-QKD014
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-NSA-QKD
+- id: QSC-02.004
+  title: QKD capacity, fallback and denial resilience
+  domain: QSD-02
+  objective: Detect degraded QKD service, preserve safe operation and prevent insecure or uncontrolled fallback.
+  implementation_guidance:
+  - Baseline key-rate and error metrics
+  - Capacity-plan consumers and buffers
+  - Define authenticated fallback or fail-closed policy by use case
+  expected_evidence:
+  - capacity model
+  - monitoring dashboard
+  - degradation exercise
+  mitigates:
+  - QTE-02.004
+  verified_by:
+  - QSTEST-02.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1710
+  - SRC-NSA-QKD
+- id: QSC-03.001
+  title: Authenticated and policy-constrained quantum-network control
+  domain: QSD-03
+  objective: Protect controllers, orchestration APIs and topology state with strong identity, least privilege, integrity
+    and audit.
+  implementation_guidance:
+  - Separate management and service planes
+  - Sign/version topology and policy changes
+  - Require dual control for high-impact actions
+  expected_evidence:
+  - RBAC/ABAC policy
+  - controller logs
+  - configuration signatures
+  mitigates:
+  - QTE-03.001
+  verified_by:
+  - QSTEST-03.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-03.002
+  title: Quantum-resource provenance and service integrity
+  domain: QSD-03
+  objective: Bind quantum-resource requests and results to authenticated topology, quality metrics, time and service
+    provenance.
+  implementation_guidance:
+  - Define resource state model and trust boundaries
+  - Protect metadata and scheduler decisions
+  - Cross-check quality indicators with independent telemetry
+  expected_evidence:
+  - resource ledger/log
+  - scheduler policy
+  - quality-monitoring records
+  mitigates:
+  - QTE-03.002
+  verified_by:
+  - QSTEST-03.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-03.003
+  title: Resilient authenticated timing and synchronization
+  domain: QSD-03
+  objective: Validate time/reference provenance, monitor drift and provide bounded behavior when synchronization
+    degrades.
+  implementation_guidance:
+  - Use multiple/reference-quality checks where justified
+  - Authenticate configuration and timing metadata
+  - Define drift thresholds and degraded mode
+  expected_evidence:
+  - time-source architecture
+  - drift telemetry
+  - holdover/degraded-mode test
+  mitigates:
+  - QTE-03.003
+  verified_by:
+  - QSTEST-03.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ITU-Y3800
+  - SRC-ITU-X1710
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-03.004
+  title: Boundary characterization and fault containment
+  domain: QSD-03
+  objective: Characterize interface behavior, protect associated metadata and contain failures between heterogeneous
+    components.
+  implementation_guidance:
+  - Document conversion assumptions and operating envelope
+  - Monitor loss/noise and metadata continuity
+  - Isolate and bypass failed boundary components safely
+  expected_evidence:
+  - interface specification
+  - characterization report
+  - fault-containment test
+  mitigates:
+  - QTE-03.004
+  verified_by:
+  - QSTEST-03.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-04.001
+  title: Evidence-backed QRNG source characterization
+  domain: QSD-04
+  objective: Document and validate the physical source, digitization path, min-entropy assumptions, environmental
+    limits and validation scope.
+  implementation_guidance:
+  - Separate raw source, conditioning and DRBG claims
+  - Use applicable entropy validation guidance
+  - Record model limitations and health-test rationale
+  expected_evidence:
+  - source model
+  - entropy assessment
+  - validation certificate/report
+  mitigates:
+  - QTE-04.001
+  verified_by:
+  - QSTEST-04.001
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+- id: QSC-04.002
+  title: Continuous entropy health monitoring and safe failure
+  domain: QSD-04
+  objective: Detect source/processing degradation and prevent low-assurance output from entering cryptographic consumers.
+  implementation_guidance:
+  - Implement startup and continuous health tests
+  - Protect thresholds and test logic
+  - Fail safely and alert without reusing uncertain output
+  expected_evidence:
+  - health-test design
+  - test vectors/results
+  - alarm and recovery logs
+  mitigates:
+  - QTE-04.002
+  verified_by:
+  - QSTEST-04.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+- id: QSC-04.003
+  title: Authenticated entropy delivery and provenance
+  domain: QSD-04
+  objective: Bind output to approved source, processing version, health state and consumer through authenticated
+    interfaces and logs.
+  implementation_guidance:
+  - Authenticate drivers and service endpoints
+  - Expose source/health metadata without leaking sensitive internals
+  - Control and log fallback behavior
+  expected_evidence:
+  - signed software inventory
+  - API contract
+  - provenance log
+  mitigates:
+  - QTE-04.003
+  verified_by:
+  - QSTEST-04.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+  - SRC-CYCLONEDX-CBOM
+- id: QSC-04.004
+  title: Traceable randomness-to-key lifecycle
+  domain: QSD-04
+  objective: Ensure approved derivation, uniqueness, context binding, protected storage, rotation and destruction
+    for randomness-derived artifacts.
+  implementation_guidance:
+  - Define key purpose and derivation context
+  - Prevent reuse across domains
+  - Log state transitions without exposing secret material
+  expected_evidence:
+  - key-management design
+  - uniqueness checks
+  - retirement evidence
+  mitigates:
+  - QTE-04.004
+  verified_by:
+  - QSTEST-04.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-NIST-ENTROPY
+  - SRC-ETSI-QRNG
+- id: QSC-05.001
+  title: Protected operating envelope and environmental monitoring
+  domain: QSD-05
+  objective: Define, monitor and protect the physical operating envelope with safe response and evidence retention.
+  implementation_guidance:
+  - Baseline security-relevant environmental variables
+  - Restrict physical and remote control access
+  - Define alarms, stop conditions and recovery procedure
+  expected_evidence:
+  - operating-envelope specification
+  - sensor calibration records
+  - alarm/recovery logs
+  mitigates:
+  - QTE-05.001
+  verified_by:
+  - QSTEST-05.001
+  minimum_recommended_qal: QAL-4
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-05.002
+  title: Measured isolation and crosstalk-aware scheduling
+  domain: QSD-05
+  objective: Characterize shared effects and enforce scheduling, partitioning and monitoring that meet declared
+    tenant-isolation objectives.
+  implementation_guidance:
+  - Document isolation property and known coupling
+  - Use scheduler constraints and guard periods where justified
+  - Monitor cross-job quality without exposing tenant data
+  expected_evidence:
+  - crosstalk characterization
+  - scheduler policy
+  - isolation test report
+  mitigates:
+  - QTE-05.002
+  verified_by:
+  - QSTEST-05.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSC-05.003
+  title: Least-privilege protection of quantum support systems
+  domain: QSD-05
+  objective: Segment and tightly control every administrative, maintenance and physical access path to QPU support
+    infrastructure.
+  implementation_guidance:
+  - Inventory consoles and maintenance interfaces
+  - Use strong identity, session approval and recording
+  - Separate safety control from general IT administration
+  expected_evidence:
+  - network/physical access diagram
+  - privilege matrix
+  - session logs
+  mitigates:
+  - QTE-05.003
+  verified_by:
+  - QSTEST-05.003
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-05.004
+  title: Hardware provenance and sensitive-IP protection
+  domain: QSD-05
+  objective: Trace critical components and service actions while limiting access to design, diagnostic and calibration
+    intellectual property.
+  implementation_guidance:
+  - Maintain hardware BOM and chain of custody
+  - Authenticate replacements and maintenance artifacts
+  - Classify and minimize diagnostic data sharing
+  expected_evidence:
+  - HBOM/chain of custody
+  - acceptance test
+  - supplier access record
+  mitigates:
+  - QTE-05.004
+  verified_by:
+  - QSTEST-05.004
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-06.001
+  title: Authenticated, reviewed and reproducible calibration
+  domain: QSD-06
+  objective: Protect calibration data, workflows and approvals from unauthorized change and enable independent sanity
+    checks and rollback.
+  implementation_guidance:
+  - Sign/version calibration artifacts
+  - Separate measurement, approval and deployment roles
+  - Retain golden baseline and rollback point
+  expected_evidence:
+  - signed calibration package
+  - approval log
+  - comparison/reproduction report
+  mitigates:
+  - QTE-06.001
+  verified_by:
+  - QSTEST-06.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSC-06.002
+  title: Integrity and authorization of control artifacts
+  domain: QSD-06
+  objective: Cryptographically bind approved pulse/control artifacts to hardware, calibration version and deployment
+    authorization.
+  implementation_guidance:
+  - Sign and hash waveform libraries
+  - Use immutable version references in jobs
+  - Monitor unauthorized change and provide rollback
+  expected_evidence:
+  - artifact signatures
+  - deployment manifest
+  - change audit
+  mitigates:
+  - QTE-06.002
+  verified_by:
+  - QSTEST-06.002
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-06.003
+  title: Secure control-firmware lifecycle
+  domain: QSD-06
+  objective: Use verifiable builds, signed updates, protected debug access, measured inventory and recoverable firmware
+    deployment.
+  implementation_guidance:
+  - Maintain firmware/FPGA SBOM and provenance
+  - Enforce signature and anti-rollback policy
+  - Test recovery with known-good image
+  expected_evidence:
+  - signed release manifest
+  - update logs
+  - secure-boot/attestation record
+  - recovery exercise
+  mitigates:
+  - QTE-06.003
+  verified_by:
+  - QSTEST-06.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-06.004
+  title: Tamper-evident quantum operations telemetry
+  domain: QSD-06
+  objective: Collect attributable, time-consistent and integrity-protected telemetry sufficient to reconstruct security-relevant
+    events.
+  implementation_guidance:
+  - Define minimum event schema and retention
+  - Separate log administration from system control
+  - Hash/sign or forward logs to protected storage
+  expected_evidence:
+  - logging architecture
+  - event samples
+  - integrity verification
+  - retention proof
+  mitigates:
+  - QTE-06.004
+  verified_by:
+  - QSTEST-06.004
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-07.001
+  title: Reproducible and policy-constrained circuit transformation
+  domain: QSD-07
+  objective: Verify compiler provenance and demonstrate that transformations preserve approved semantics within
+    declared tolerance.
+  implementation_guidance:
+  - Pin toolchain and target profile
+  - Record source/intermediate/final circuit hashes
+  - Use independent checks or differential compilation for critical workloads
+  expected_evidence:
+  - toolchain SBOM
+  - transformation manifest
+  - equivalence/differential test
+  mitigates:
+  - QTE-07.001
+  verified_by:
+  - QSTEST-07.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSC-07.002
+  title: Circuit confidentiality and metadata minimization
+  domain: QSD-07
+  objective: Classify circuit IP, minimize provider-visible information and constrain access, retention, export
+    and support handling.
+  implementation_guidance:
+  - Threat-model what circuit/job metadata reveals
+  - Use contractual and technical controls
+  - Tokenize identifiers and minimize retained artifacts
+  expected_evidence:
+  - data-flow/privacy review
+  - provider terms
+  - access and deletion logs
+  mitigates:
+  - QTE-07.002
+  verified_by:
+  - QSTEST-07.002
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-07.003
+  title: Secure quantum software supply chain
+  domain: QSD-07
+  objective: Provide complete dependency provenance, isolated builds, review, signing, vulnerability management
+    and controlled release.
+  implementation_guidance:
+  - Generate SBOM and lock dependencies
+  - Protect CI identities and secrets
+  - Sign releases and verify before execution
+  expected_evidence:
+  - SBOM
+  - build attestation
+  - signature verification
+  - dependency review
+  mitigates:
+  - QTE-07.003
+  verified_by:
+  - QSTEST-07.003
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-OQS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-07.004
+  title: Result provenance and reproducibility
+  domain: QSD-07
+  objective: Bind result data to job, circuit, backend, calibration, compiler, post-processing and time, with independent
+    sanity checks.
+  implementation_guidance:
+  - Use signed/hashed manifests
+  - Retain seeds, shot/sample counts and calibration snapshot
+  - Cross-check critical results with simulator, alternate backend or classical invariant
+  expected_evidence:
+  - result manifest
+  - artifact hashes
+  - reproduction record
+  mitigates:
+  - QTE-07.004
+  verified_by:
+  - QSTEST-07.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-08.001
+  title: Strong identity and least-privilege quantum-cloud access
+  domain: QSD-08
+  objective: Authenticate users/workloads, constrain API permissions and protect sessions, secrets and administrative
+    paths.
+  implementation_guidance:
+  - Use phishing-resistant MFA for privileged users where available
+  - Use short-lived workload identity
+  - Apply resource/job/backend-level authorization and audit
+  expected_evidence:
+  - IAM policy
+  - token configuration
+  - access logs
+  - privilege review
+  mitigates:
+  - QTE-08.001
+  verified_by:
+  - QSTEST-08.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+- id: QSC-08.002
+  title: Defined and tested tenant isolation
+  domain: QSD-08
+  objective: State explicit isolation properties for identities, jobs, storage, scheduling, telemetry and physical/shared
+    effects, then test them.
+  implementation_guidance:
+  - Partition tenant data and metadata
+  - Sanitize transient artifacts
+  - Constrain scheduling/co-location and monitor exceptions
+  expected_evidence:
+  - isolation architecture
+  - scheduler policy
+  - tenant separation test
+  mitigates:
+  - QTE-08.002
+  verified_by:
+  - QSTEST-08.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSC-08.003
+  title: Protected quantum job data lifecycle
+  domain: QSD-08
+  objective: Minimize, encrypt, segregate and delete job data, parameters and results according to classification
+    and residency requirements.
+  implementation_guidance:
+  - Classify every job artifact
+  - Keep sensitive payload out of general logs
+  - Enforce encryption, retention and deletion with customer-visible evidence
+  expected_evidence:
+  - data inventory
+  - storage policy
+  - access logs
+  - deletion verification
+  mitigates:
+  - QTE-08.003
+  verified_by:
+  - QSTEST-08.003
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-08.004
+  title: Portable and resilient quantum-cloud service design
+  domain: QSD-08
+  objective: Define provider responsibilities, portability, alternate execution/degraded mode, incident handling
+    and secure exit.
+  implementation_guidance:
+  - Use portable circuit/data formats where feasible
+  - Maintain provider/backend abstraction and export
+  - Test account/region/backend outage response
+  expected_evidence:
+  - shared-responsibility matrix
+  - continuity plan
+  - export/restore test
+  mitigates:
+  - QTE-08.004
+  verified_by:
+  - QSTEST-08.004
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QRAMM
+- id: QSC-09.001
+  title: Integrity of hybrid optimization state
+  domain: QSD-09
+  objective: Authenticate and version parameters, objectives, code, stopping rules and state transitions across
+    the classical-quantum loop.
+  implementation_guidance:
+  - Use immutable run manifests and signed workflow definitions
+  - Separate model change approval from execution
+  - Validate invariants and checkpoints
+  expected_evidence:
+  - workflow manifest
+  - state/checkpoint hashes
+  - change approvals
+  mitigates:
+  - QTE-09.001
+  verified_by:
+  - QSTEST-09.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-09.002
+  title: QML data provenance and robustness
+  domain: QSD-09
+  objective: Trace datasets and transformations, validate quality and evaluate model sensitivity to plausible bounded
+    corruption.
+  implementation_guidance:
+  - Version and hash datasets/features
+  - Approve sources and transformations
+  - Use holdout, segment and robustness checks
+  expected_evidence:
+  - dataset manifest
+  - quality report
+  - robustness evaluation
+  mitigates:
+  - QTE-09.002
+  verified_by:
+  - QSTEST-09.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-09.003
+  title: Strict hybrid-interface validation
+  domain: QSD-09
+  objective: Authenticate callers and validate schema, type, range, size and semantic policy at every hybrid service
+    boundary.
+  implementation_guidance:
+  - Use versioned schemas and canonical serialization
+  - Reject unknown fields and unsafe object loading
+  - Apply resource and parameter limits
+  expected_evidence:
+  - API schema
+  - validation tests
+  - rejection logs
+  mitigates:
+  - QTE-09.003
+  verified_by:
+  - QSTEST-09.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+- id: QSC-09.004
+  title: End-to-end hybrid decision provenance
+  domain: QSD-09
+  objective: Create an immutable lineage from source data and workflow configuration to quantum result and downstream
+    decision.
+  implementation_guidance:
+  - Use globally unique run and artifact IDs
+  - Bind model/circuit/backend/calibration versions
+  - Require decision systems to retain evidence pointer and confidence
+  expected_evidence:
+  - lineage graph
+  - signed run manifest
+  - decision audit sample
+  mitigates:
+  - QTE-09.004
+  verified_by:
+  - QSTEST-09.004
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSC-10.001
+  title: Sensor input validation and resilient fusion
+  domain: QSD-10
+  objective: Characterize plausible environmental influences, cross-check critical measurements and enter a safe
+    mode when trust is lost.
+  implementation_guidance:
+  - Define sensor threat/operating envelope
+  - Use independent reference or multimodal consistency where justified
+  - Monitor residuals and health state
+  expected_evidence:
+  - sensor threat model
+  - characterization report
+  - fusion/anomaly logic test
+  mitigates:
+  - QTE-10.001
+  verified_by:
+  - QSTEST-10.001
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-10.002
+  title: Authenticated and cross-checked metrology references
+  domain: QSD-10
+  objective: Protect reference configuration and distribution, compare independent sources and define bounded holdover/degraded
+    operation.
+  implementation_guidance:
+  - Inventory all reference dependencies
+  - Protect configuration and calibration
+  - Use cross-checks and explicit confidence/holdover state
+  expected_evidence:
+  - reference architecture
+  - comparison telemetry
+  - holdover exercise
+  mitigates:
+  - QTE-10.002
+  verified_by:
+  - QSTEST-10.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-10.003
+  title: Tamper-evident measurement lineage
+  domain: QSD-10
+  objective: Bind raw and processed measurements to sensor identity, calibration, reference, time, transformation
+    and operator.
+  implementation_guidance:
+  - Hash/sign measurement batches or manifests
+  - Preserve raw/derived distinction
+  - Version and approve correction algorithms
+  expected_evidence:
+  - measurement manifest
+  - transformation code/version
+  - integrity verification
+  mitigates:
+  - QTE-10.003
+  verified_by:
+  - QSTEST-10.003
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-10.004
+  title: Purpose-bound sensing access and data governance
+  domain: QSD-10
+  objective: Restrict sensing operation and data use to approved purpose, geography, user, retention and disclosure
+    conditions.
+  implementation_guidance:
+  - Classify capability and outputs
+  - Use least privilege, purpose limitation and export controls where applicable
+  - Monitor high-risk queries/exports
+  expected_evidence:
+  - authorization matrix
+  - data-use policy
+  - access/export audit
+  mitigates:
+  - QTE-10.004
+  verified_by:
+  - QSTEST-10.004
+  minimum_recommended_qal: QAL-2
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-11.001
+  title: Component identity, provenance and acceptance testing
+  domain: QSD-11
+  objective: Trace critical components to approved sources and verify identity and security-relevant properties
+    before integration.
+  implementation_guidance:
+  - Maintain BOM and supplier tiers
+  - Use tamper-evident custody and signed records
+  - Apply risk-based acceptance tests and quarantine
+  expected_evidence:
+  - BOM/provenance record
+  - receipt inspection
+  - acceptance report
+  mitigates:
+  - QTE-11.001
+  verified_by:
+  - QSTEST-11.001
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-11.002
+  title: Authenticated update and maintenance lifecycle
+  domain: QSD-11
+  objective: Verify release provenance, signing, authorization, anti-rollback, maintenance access and recovery for
+    all update classes.
+  implementation_guidance:
+  - Separate release signing from distribution
+  - Protect trust anchors and revocation
+  - Record maintenance sessions and verify recovery
+  expected_evidence:
+  - signed release manifest
+  - trust-anchor inventory
+  - maintenance log
+  - rollback/recovery test
+  mitigates:
+  - QTE-11.002
+  verified_by:
+  - QSTEST-11.002
+  minimum_recommended_qal: QAL-3
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-HW-PRIMER
+- id: QSC-11.003
+  title: Lifecycle compatibility and obsolescence management
+  domain: QSD-11
+  objective: Align component support, cryptographic transition, spares, interfaces and evidence retention with mission/data
+    lifetime.
+  implementation_guidance:
+  - Record support/end-of-life dates and dependencies
+  - Maintain replacement/portability plan
+  - Archive reproducible builds, schemas and evidence
+  expected_evidence:
+  - lifecycle register
+  - vendor roadmap
+  - replacement test
+  - escrow/archive record
+  mitigates:
+  - QTE-11.003
+  verified_by:
+  - QSTEST-11.003
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-QRAMM
+  - SRC-CYCLONEDX-CBOM
+- id: QSC-11.004
+  title: Transparent and resilient third-party dependency management
+  domain: QSD-11
+  objective: Identify supplier tiers, allocate security responsibilities and maintain tested continuity, exit and
+    evidence rights.
+  implementation_guidance:
+  - Require dependency and incident disclosure
+  - Define access, data, update, audit and deletion rights
+  - Develop substitute/degraded-mode strategy
+  expected_evidence:
+  - supplier map
+  - contract clauses
+  - continuity/exit exercise
+  mitigates:
+  - QTE-11.004
+  verified_by:
+  - QSTEST-11.004
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-12.001
+  title: Scoped evidence-based assurance claims
+  domain: QSD-12
+  objective: Bind every material security claim to named asset/version, assumptions, evidence, limitations and accountable
+    approver.
+  implementation_guidance:
+  - Maintain claim-evidence register
+  - Prohibit absolute claims without formal basis
+  - Review external communications against technical evidence
+  expected_evidence:
+  - assurance case
+  - claim-evidence matrix
+  - approval record
+  mitigates:
+  - QTE-12.001
+  verified_by:
+  - QSTEST-12.001
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-IEEE-P1947
+  - SRC-ISO-QKD1
+  - SRC-ETSI-QKD016
+- id: QSC-12.002
+  title: Accountable quantum security governance and response
+  domain: QSD-12
+  objective: Assign ownership, maintain threat/risk models and integrate quantum providers, laboratories and evidence
+    into incident and continuity processes.
+  implementation_guidance:
+  - Define RACI and escalation
+  - Create playbooks for key scenarios
+  - Exercise evidence preservation, provider coordination and safe shutdown
+  expected_evidence:
+  - RACI
+  - threat model
+  - incident playbook
+  - tabletop report
+  mitigates:
+  - QTE-12.002
+  verified_by:
+  - QSTEST-12.002
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-IEEE-P1947
+  - SRC-QRAMM
+  - SRC-QUASAR
+- id: QSC-12.003
+  title: Competence and separation of critical duties
+  domain: QSD-12
+  objective: Define role-specific competencies, dual control and independent review for high-impact quantum security
+    actions.
+  implementation_guidance:
+  - Maintain skills matrix and training plan
+  - Separate creation, approval, deployment and evidence review
+  - Use external review where internal independence is impossible
+  expected_evidence:
+  - skills matrix
+  - access/approval workflow
+  - review records
+  mitigates:
+  - QTE-12.003
+  verified_by:
+  - QSTEST-12.003
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSC-12.004
+  title: Obligation-aware quantum technology governance
+  domain: QSD-12
+  objective: Identify and enforce applicable legal, privacy, export, contractual, research-ethics and data-sovereignty
+    requirements throughout lifecycle.
+  implementation_guidance:
+  - Maintain obligation and jurisdiction register
+  - Review supplier/remote access/data flows before use
+  - Record approvals, restrictions and exit/destruction requirements
+  expected_evidence:
+  - legal/privacy assessment
+  - data-flow and region evidence
+  - licenses/approvals
+  - contract mapping
+  mitigates:
+  - QTE-12.004
+  verified_by:
+  - QSTEST-12.004
+  minimum_recommended_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-QUASAR
+  - SRC-IEEE-P1947

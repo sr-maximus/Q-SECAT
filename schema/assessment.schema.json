@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://q-secat.org/schema/assessment.schema.json",
+  "title": "Q-SECAT Assessment",
+  "description": "Machine-readable record for a Q-SECAT security assessment.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "framework_version",
+    "assessment_id",
+    "title",
+    "assessment_date",
+    "authorization",
+    "scope",
+    "domain_applicability",
+    "findings"
+  ],
+  "properties": {
+    "framework_version": {"const": "0.1.0"},
+    "assessment_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$"},
+    "title": {"type": "string", "minLength": 3, "maxLength": 240},
+    "organization": {"type": "string", "maxLength": 240},
+    "assessor": {"type": "string", "maxLength": 240},
+    "assessment_date": {"type": "string", "format": "date"},
+    "profile": {"type": "string", "pattern": "^QSP-[A-Z0-9]+$"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "owner", "statement"],
+      "properties": {
+        "authorized": {"const": true},
+        "owner": {"type": "string", "minLength": 2},
+        "statement": {"type": "string", "minLength": 10},
+        "expires": {"type": "string", "format": "date"},
+        "safety_constraints": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "assets", "exclusions"],
+      "properties": {
+        "description": {"type": "string", "minLength": 10},
+        "assets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "owner", "criticality"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "name": {"type": "string", "minLength": 1},
+              "owner": {"type": "string", "minLength": 1},
+              "criticality": {"enum": ["low", "moderate", "high", "very_high", "critical"]},
+              "description": {"type": "string"},
+              "data_lifetime_years": {"type": "number", "minimum": 0, "maximum": 100}
+            }
+          }
+        },
+        "exclusions": {"type": "array", "items": {"type": "string"}},
+        "assumptions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "domain_applicability": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain_id", "status", "rationale"],
+        "properties": {
+          "domain_id": {"type": "string", "pattern": "^QSD-(0[1-9]|1[0-2])$"},
+          "status": {"enum": ["applicable", "inherited", "not_applicable", "unknown"]},
+          "rationale": {"type": "string", "minLength": 3},
+          "provider": {"type": "string"},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/finding"}
+    }
+  },
+  "$defs": {
+    "score05": {"type": "number", "minimum": 0, "maximum": 5},
+    "score01": {"type": "number", "minimum": 0, "maximum": 1},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "type", "uri", "qal"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^EVID-[A-Za-z0-9._-]+$"},
+        "title": {"type": "string", "minLength": 2},
+        "type": {"type": "string", "minLength": 2},
+        "uri": {"type": "string", "minLength": 3},
+        "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "collected_by": {"type": "string"},
+        "scope": {"type": "string"},
+        "qal": {"enum": ["QAL-0", "QAL-1", "QAL-2", "QAL-3", "QAL-4", "QAL-5"]},
+        "classification": {"type": "string"},
+        "retention": {"type": "string"}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "title", "technique_id", "control_id", "test_id", "status",
+        "impact", "likelihood", "control_effectiveness", "evidence_confidence"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^FIND-[A-Za-z0-9._-]+$"},
+        "title": {"type": "string", "minLength": 3},
+        "description": {"type": "string"},
+        "asset_ids": {"type": "array", "items": {"type": "string"}},
+        "technique_id": {"type": "string", "pattern": "^QTE-(0[1-9]|1[0-2])\\.00[1-4]$"},
+        "control_id": {"type": "string", "pattern": "^QSC-(0[1-9]|1[0-2])\\.00[1-4]$"},
+        "test_id": {"type": "string", "pattern": "^QSTEST-(0[1-9]|1[0-2])\\.00[1-4]$"},
+        "status": {"enum": ["open", "accepted", "mitigated", "closed", "inconclusive"]},
+        "impact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["confidentiality", "integrity", "availability", "safety_mission", "privacy_ip", "regulatory_sovereignty"],
+          "properties": {
+            "confidentiality": {"$ref": "#/$defs/score05"},
+            "integrity": {"$ref": "#/$defs/score05"},
+            "availability": {"$ref": "#/$defs/score05"},
+            "safety_mission": {"$ref": "#/$defs/score05"},
+            "privacy_ip": {"$ref": "#/$defs/score05"},
+            "regulatory_sovereignty": {"$ref": "#/$defs/score05"}
+          }
+        },
+        "likelihood": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exposure", "feasibility", "actor_capability", "stealth_persistence"],
+          "properties": {
+            "exposure": {"$ref": "#/$defs/score05"},
+            "feasibility": {"$ref": "#/$defs/score05"},
+            "actor_capability": {"$ref": "#/$defs/score05"},
+            "stealth_persistence": {"$ref": "#/$defs/score05"},
+            "urgency": {"$ref": "#/$defs/score05"}
+          }
+        },
+        "timeline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["data_shelf_life_years", "migration_lead_years", "threat_horizon_years"],
+          "properties": {
+            "data_shelf_life_years": {"type": "number", "minimum": 0, "maximum": 100},
+            "migration_lead_years": {"type": "number", "minimum": 0, "maximum": 50},
+            "threat_horizon_years": {"type": "number", "minimum": 0, "maximum": 100},
+            "scenario": {"type": "string"},
+            "source": {"type": "string"}
+          }
+        },
+        "control_effectiveness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["implementation", "assurance"],
+          "properties": {
+            "implementation": {"$ref": "#/$defs/score01"},
+            "assurance": {"$ref": "#/$defs/score01"},
+            "qal": {"enum": ["QAL-0", "QAL-1", "QAL-2", "QAL-3", "QAL-4", "QAL-5"]}
+          }
+        },
+        "evidence_confidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maturity", "source_quality", "reproducibility", "applicability"],
+          "properties": {
+            "maturity": {"$ref": "#/$defs/score01"},
+            "source_quality": {"$ref": "#/$defs/score01"},
+            "reproducibility": {"$ref": "#/$defs/score01"},
+            "applicability": {"$ref": "#/$defs/score01"}
+          }
+        },
+        "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^EVID-[A-Za-z0-9._-]+$"}},
+        "treatment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "decision": {"enum": ["avoid", "reduce", "transfer", "accept", "investigate"]},
+            "owner": {"type": "string"},
+            "due_date": {"type": "string", "format": "date"},
+            "actions": {"type": "array", "items": {"type": "string"}},
+            "acceptance_authority": {"type": "string"}
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"likelihood": {"not": {"required": ["urgency"]}}}},
+          "then": {"required": ["timeline"]}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,179 @@
+framework_version: 0.1.0
+assessment_id: QSECAT-DEMO-2026-001
+title: Authorized demonstration assessment for a hybrid quantum cloud pilot
+organization: Example Research Organization
+assessor: Internal Security Assessment Team
+assessment_date: "2026-08-01"
+profile: QSP-QCLOUD
+authorization:
+  authorized: true
+  owner: Quantum Platform Owner
+  statement: Testing is restricted to the owned demonstration tenant, synthetic workloads and documented non-production services.
+  expires: "2026-12-31"
+  safety_constraints:
+    - No physical interference or environmental manipulation.
+    - No testing of other tenants or provider infrastructure.
+scope:
+  description: Review of cryptographic transition and a non-production hybrid quantum-cloud workflow.
+  assets:
+    - id: ASSET-API
+      name: Hybrid workflow API
+      owner: Platform Engineering
+      criticality: high
+      description: API and orchestration service for synthetic quantum jobs.
+      data_lifetime_years: 12
+    - id: ASSET-QCLOUD
+      name: Demonstration quantum cloud tenant
+      owner: Quantum Research Team
+      criticality: high
+      description: Isolated test tenant using non-sensitive circuits.
+  exclusions:
+    - Provider physical hardware and other customer tenants.
+  assumptions:
+    - Provider evidence is inherited unless independently testable in the demonstration tenant.
+domain_applicability:
+  - domain_id: QSD-01
+    status: applicable
+    rationale: Cryptographic inventory and migration are in scope.
+    evidence_ids: [EVID-CBOM]
+  - domain_id: QSD-02
+    status: not_applicable
+    rationale: No QKD service is used.
+  - domain_id: QSD-03
+    status: not_applicable
+    rationale: No quantum network or entanglement service is used.
+  - domain_id: QSD-04
+    status: inherited
+    rationale: Entropy service is provided by the cloud and classical platform.
+    provider: Demonstration provider
+  - domain_id: QSD-05
+    status: inherited
+    rationale: Quantum hardware is provider operated.
+    provider: Demonstration provider
+  - domain_id: QSD-06
+    status: inherited
+    rationale: Calibration and control electronics are provider operated.
+    provider: Demonstration provider
+  - domain_id: QSD-07
+    status: applicable
+    rationale: SDK, compiler and circuit provenance are in scope.
+    evidence_ids: [EVID-TOOLCHAIN]
+  - domain_id: QSD-08
+    status: applicable
+    rationale: API, IAM and tenancy are directly in scope.
+  - domain_id: QSD-09
+    status: applicable
+    rationale: Classical-quantum orchestration is directly in scope.
+  - domain_id: QSD-10
+    status: not_applicable
+    rationale: No quantum sensing component is used.
+  - domain_id: QSD-11
+    status: applicable
+    rationale: Dependencies and provider lifecycle are in scope.
+  - domain_id: QSD-12
+    status: applicable
+    rationale: Governance and assurance claims are in scope.
+evidence:
+  - id: EVID-CBOM
+    title: Demonstration cryptographic inventory
+    type: cbom
+    uri: evidence://demo/cbom.json
+    sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    created_at: "2026-08-01T12:00:00Z"
+    collected_by: assessor@example.org
+    scope: ASSET-API
+    qal: QAL-2
+    classification: internal
+    retention: 3y
+  - id: EVID-TOOLCHAIN
+    title: Pinned compiler and dependency manifest
+    type: build-manifest
+    uri: evidence://demo/toolchain.json
+    sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    created_at: "2026-08-01T12:10:00Z"
+    collected_by: assessor@example.org
+    scope: ASSET-QCLOUD
+    qal: QAL-3
+    classification: internal
+    retention: 3y
+findings:
+  - id: FIND-PQC-001
+    title: Long-lived API trust remains partially dependent on quantum-vulnerable cryptography
+    description: Inventory confirms legacy public-key dependencies with a migration plan not yet fully implemented.
+    asset_ids: [ASSET-API]
+    technique_id: QTE-01.001
+    control_id: QSC-01.001
+    test_id: QSTEST-01.001
+    status: open
+    impact:
+      confidentiality: 5
+      integrity: 4
+      availability: 2
+      safety_mission: 2
+      privacy_ip: 4
+      regulatory_sovereignty: 3
+    likelihood:
+      exposure: 4
+      feasibility: 2
+      actor_capability: 3
+      stealth_persistence: 4
+    timeline:
+      data_shelf_life_years: 12
+      migration_lead_years: 4
+      threat_horizon_years: 10
+      scenario: planning
+      source: Organization-approved scenario; not a prediction.
+    control_effectiveness:
+      implementation: 0.45
+      assurance: 0.50
+      qal: QAL-2
+    evidence_confidence:
+      maturity: 0.60
+      source_quality: 0.80
+      reproducibility: 0.70
+      applicability: 0.90
+    evidence_ids: [EVID-CBOM]
+    treatment:
+      decision: reduce
+      owner: Cryptography Lead
+      due_date: "2027-03-31"
+      actions:
+        - Complete dependency-level migration plan.
+        - Run approved PQC interoperability tests.
+  - id: FIND-COMPILER-001
+    title: Toolchain reproducibility exists but independent semantic comparison is incomplete
+    description: The build is pinned and attributable; differential compilation coverage remains partial.
+    asset_ids: [ASSET-QCLOUD]
+    technique_id: QTE-07.001
+    control_id: QSC-07.001
+    test_id: QSTEST-07.001
+    status: open
+    impact:
+      confidentiality: 3
+      integrity: 5
+      availability: 3
+      safety_mission: 2
+      privacy_ip: 4
+      regulatory_sovereignty: 2
+    likelihood:
+      exposure: 3
+      feasibility: 3
+      actor_capability: 3
+      urgency: 4
+      stealth_persistence: 4
+    control_effectiveness:
+      implementation: 0.70
+      assurance: 0.65
+      qal: QAL-3
+    evidence_confidence:
+      maturity: 0.65
+      source_quality: 0.75
+      reproducibility: 0.75
+      applicability: 0.85
+    evidence_ids: [EVID-TOOLCHAIN]
+    treatment:
+      decision: reduce
+      owner: Quantum Software Lead
+      due_date: "2026-11-30"
+      actions:
+        - Add independent simulator comparison for critical circuit classes.

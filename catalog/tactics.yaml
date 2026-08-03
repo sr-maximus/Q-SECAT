@@ -1,0 +1,44 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QTA-01
+  name: Reconnaissance & Profiling
+  objective: Learn topology, modality, versions, schedules, noise, calibration or trust relationships.
+- id: QTA-02
+  name: Resource & Supply Preparation
+  objective: Obtain access, components, dependencies, identities or supplier positions needed for later action.
+- id: QTA-03
+  name: Initial Access
+  objective: Enter a classical, quantum, cloud, laboratory or supplier security boundary.
+- id: QTA-04
+  name: Classical Control-Plane Compromise
+  objective: Control identity, API, network, host, orchestration or storage supporting quantum operation.
+- id: QTA-05
+  name: Calibration & Environment Manipulation
+  objective: Alter calibration or operating conditions to influence performance, measurement or trust.
+- id: QTA-06
+  name: Circuit, Job & Data Manipulation
+  objective: Modify algorithms, circuits, inputs, measurements, models or results.
+- id: QTA-07
+  name: Shared-Resource & Multi-tenant Abuse
+  objective: Exploit scheduling, crosstalk, reuse, co-location or shared infrastructure.
+- id: QTA-08
+  name: Side Channel & Leakage
+  objective: Infer secrets, IP, workload, state or configuration from observable effects.
+- id: QTA-09
+  name: Identity, Keys & Randomness Abuse
+  objective: Compromise authentication, entropy, key generation, storage, delivery or retirement.
+- id: QTA-10
+  name: Quantum Channel & Network Manipulation
+  objective: Affect quantum links, nodes, timing, routing, orchestration or key services.
+- id: QTA-11
+  name: Persistence, Evasion & Evidence Manipulation
+  objective: Retain access or obscure activity, provenance and assessment evidence.
+- id: QTA-12
+  name: Degradation, Denial & Corruption
+  objective: Reduce key rate, fidelity, accuracy, availability or confidence in outcomes.

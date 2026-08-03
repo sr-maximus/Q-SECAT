@@ -1,0 +1,143 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: SRC-NIST-FIPS203
+  title: NIST FIPS 203 — ML-KEM
+  type: standard
+  year: 2024
+  url: https://csrc.nist.gov/pubs/fips/203/final
+- id: SRC-NIST-FIPS204
+  title: NIST FIPS 204 — ML-DSA
+  type: standard
+  year: 2024
+  url: https://csrc.nist.gov/pubs/fips/204/final
+- id: SRC-NIST-FIPS205
+  title: NIST FIPS 205 — SLH-DSA
+  type: standard
+  year: 2024
+  url: https://csrc.nist.gov/pubs/fips/205/final
+- id: SRC-NIST-AGILITY
+  title: NIST CSWP 39upd1 — Crypto Agility
+  type: official-guidance
+  year: 2026
+  url: https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final
+- id: SRC-NIST-MIGRATION
+  title: NIST NCCoE — Migration to Post-Quantum Cryptography
+  type: official-guidance
+  year: 2026
+  url: https://www.nccoe.nist.gov/applied-cryptography/migration-to-pqc
+- id: SRC-NIST-ENTROPY
+  title: NIST SP 800-90 series and entropy validation
+  type: official-guidance
+  year: 2026
+  url: https://csrc.nist.gov/projects/cryptographic-module-validation-program/entropy-validations/documents
+- id: SRC-IEEE-P1947
+  title: IEEE P1947 — Standard for Quantum Cybersecurity Framework (project)
+  type: standards-project
+  year: 2026
+  url: https://standards.ieee.org/ieee/1947/11583/
+- id: SRC-ISO-QKD1
+  title: ISO/IEC 23837-1:2023 — QKD security requirements
+  type: standard
+  year: 2023
+  url: https://www.iso.org/standard/77097.html
+- id: SRC-ISO-QKD2
+  title: ISO/IEC 23837-2:2023 — QKD evaluation and testing
+  type: standard
+  year: 2023
+  url: https://www.iso.org/standard/77309.html
+- id: SRC-ETSI-QKD016
+  title: ETSI GS QKD 016 V2.1.1 — QKD Protection Profile
+  type: standard
+  year: 2024
+  url: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/016/02.01.01_60/gs_QKD016v020101p.pdf
+- id: SRC-ETSI-QKD014
+  title: ETSI GS QKD 014 — QKD key delivery API
+  type: standard
+  year: 2019
+  url: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf
+- id: SRC-ETSI-QRNG
+  title: ETSI TR 104 171 V1.1.1 — QRNG implementation guidelines
+  type: official-guidance
+  year: 2026
+  url: https://www.etsi.org/deliver/etsi_tr/104100_104199/104171/01.01.01_60/tr_104171v010101p.pdf
+- id: SRC-ITU-Y3800
+  title: ITU-T Y.3800 — Overview on networks supporting QKD
+  type: standard
+  year: 2019
+  url: https://www.itu.int/rec/T-REC-Y.3800/
+- id: SRC-ITU-X1710
+  title: ITU-T X.1710 — Security framework for QKD networks
+  type: standard
+  year: 2020
+  url: https://www.itu.int/rec/T-REC-X.1710/en
+- id: SRC-ITU-X1711
+  title: ITU-T X.1711 — Framework of QKD protocols
+  type: standard
+  year: 2026
+  url: https://www.itu.int/rec/T-REC-X.1711-202603-P
+- id: SRC-ITU-Y3832
+  title: ITU-T Y.3832 — QKD network orchestration
+  type: standard
+  year: 2025
+  url: https://www.itu.int/rec/T-REC-Y.3832-202512-I
+- id: SRC-DOE-QIS
+  title: 'U.S. DOE — Quantum Information Science: computing, sensing and communication'
+  type: official-guidance
+  year: 2024
+  url: https://www.energy.gov/topics/quantum-information-science
+- id: SRC-ARGONNE-TAXONOMY
+  title: Toward a Quantum Information System Cybersecurity Taxonomy and Testbed
+  type: research
+  year: 2024
+  url: https://arxiv.org/abs/2404.12465
+- id: SRC-HW-PRIMER
+  title: A Primer on Security of Quantum Computing Hardware
+  type: research
+  year: 2025
+  url: https://arxiv.org/abs/2305.02505
+- id: SRC-QATTCK
+  title: QATT&CK — LSU Master’s Thesis
+  type: thesis
+  year: 2026
+  url: https://repository.lsu.edu/gradschool_theses/6279/
+- id: SRC-BASERI-RISK
+  title: Evaluation framework for quantum security risk assessment
+  type: peer-reviewed-research
+  year: 2025
+  url: https://doi.org/10.1016/j.cose.2024.104224
+- id: SRC-QUASAR
+  title: QUASAR — Quantum-Ready Architecture for Security and Risk Management
+  type: preprint
+  year: 2025
+  url: https://arxiv.org/abs/2505.17034
+- id: SRC-QRAMM
+  title: QRAMM — Quantum Readiness Assurance Maturity Model
+  type: community-framework
+  year: 2026
+  url: https://qramm.org/
+- id: SRC-MOSCA
+  title: 'Cybersecurity in an era with quantum computers: will we be ready?'
+  type: research
+  year: 2015
+  url: https://eprint.iacr.org/2015/1075
+- id: SRC-OQS
+  title: Open Quantum Safe — liboqs and integrations
+  type: implementation-project
+  year: 2026
+  url: https://openquantumsafe.org/
+- id: SRC-CYCLONEDX-CBOM
+  title: CycloneDX — Cryptography Bill of Materials
+  type: open-standard
+  year: 2026
+  url: https://cyclonedx.org/capabilities/cbom/
+- id: SRC-NSA-QKD
+  title: NSA — Quantum Key Distribution and Quantum Cryptography
+  type: official-guidance
+  year: 2026
+  url: https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/

@@ -1,0 +1,32 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QAL-0
+  name: Unsubstantiated
+  score: 0.0
+  criteria: Claim or assumption only; no verifiable artifact.
+- id: QAL-1
+  name: Documented
+  score: 0.25
+  criteria: Named owner, scope, versioned design/policy and attributable record.
+- id: QAL-2
+  name: Reviewed
+  score: 0.45
+  criteria: Architecture, configuration or static review with traceable artifacts and reviewer.
+- id: QAL-3
+  name: Reproducibly Tested
+  score: 0.65
+  criteria: Repeatable simulation, software or integration test with acceptance criteria and artifact hashes.
+- id: QAL-4
+  name: Controlled Laboratory
+  score: 0.82
+  criteria: Qualified physical/hardware validation under controlled and recorded conditions.
+- id: QAL-5
+  name: Independently Assured
+  score: 1.0
+  criteria: Competent independent reproduction, accredited evaluation or applicable recognized certification.

@@ -1,0 +1,1766 @@
+metadata:
+  framework: Q-SECAT
+  framework_version: 0.1.0
+  status: community-draft
+  release_date: '2026-08-01'
+  author: Edwin Javier Peñuela Camacho
+  license: Apache-2.0
+items:
+- id: QSTEST-01.001
+  title: Cryptographic exposure and timeline review
+  domain: QSD-01
+  technique: QTE-01.001
+  control: QSC-01.001
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Long-lived data protected by quantum-vulnerable public-key cryptography.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Scan representative code, configurations, certificates and protocol endpoints
+  - Reconcile findings with CBOM and asset inventory
+  - Calculate X+Y-Z scenarios for material assets
+  acceptance_criteria:
+  - At least 95% of in-scope critical assets have verified cryptographic records
+  - All material positive timeline gaps have assigned treatment owners
+  expected_evidence:
+  - CBOM or equivalent inventory
+  - data-retention classification
+  - migration roadmap
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-MOSCA
+  - SRC-CYCLONEDX-CBOM
+- id: QSTEST-01.002
+  title: Inventory completeness reconciliation
+  domain: QSD-01
+  technique: QTE-01.002
+  control: QSC-01.002
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Cryptographic inventory and dependency blind spots.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select a stratified sample of applications, devices and network services
+  - Compare independent discovery results with declared inventory
+  - Investigate unmatched and stale records
+  acceptance_criteria:
+  - Critical-scope unmatched rate is below approved threshold
+  - Every exception has owner, rationale and expiry
+  expected_evidence:
+  - signed inventory export
+  - discovery logs
+  - coverage reconciliation report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-NIST-MIGRATION
+  - SRC-CYCLONEDX-CBOM
+  - SRC-QRAMM
+- id: QSTEST-01.003
+  title: PQC interoperability and resource benchmark
+  domain: QSD-01
+  technique: QTE-01.003
+  control: QSC-01.003
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: PQC migration interoperability or performance failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Create representative client/server/device matrix
+  - Exercise approved PQC or hybrid profiles under normal and constrained conditions
+  - Record success, size, latency, CPU/memory and fallback behavior
+  acceptance_criteria:
+  - All required peers interoperate within approved service objectives
+  - No silent downgrade to prohibited mechanisms occurs
+  expected_evidence:
+  - compatibility matrix
+  - performance baseline
+  - failure and rollback test record
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-NIST-FIPS203
+  - SRC-NIST-FIPS204
+  - SRC-NIST-FIPS205
+  - SRC-OQS
+- id: QSTEST-01.004
+  title: Downgrade and rollback policy validation
+  domain: QSD-01
+  technique: QTE-01.004
+  control: QSC-01.004
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Crypto-agility downgrade, rollback or policy bypass.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Enumerate supported algorithm combinations and policy states
+  - Attempt only authorized negative negotiation cases in a test environment
+  - Exercise rollback with approvals, logging and recovery
+  acceptance_criteria:
+  - Prohibited profiles are consistently rejected
+  - Rollback is authorized, observable, reversible and time-bounded
+  expected_evidence:
+  - policy-as-code
+  - change approvals
+  - negotiation telemetry
+  - rollback exercise
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-NIST-MIGRATION
+- id: QSTEST-02.001
+  title: QKD classical-channel authentication review
+  domain: QSD-02
+  technique: QTE-02.001
+  control: QSC-02.001
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Unauthenticated classical channel or weak key confirmation in QKD.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace every classical message flow and trust dependency
+  - Verify authentication and key confirmation behavior with a test pair or simulator
+  - Check rejection and audit behavior for invalid identities/messages
+  acceptance_criteria:
+  - All security-relevant classical exchanges are authenticated
+  - Invalid peer or key bindings are rejected and logged
+  expected_evidence:
+  - protocol design
+  - authentication configuration
+  - key metadata and logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1711
+- id: QSTEST-02.002
+  title: QKD assumption-to-implementation trace
+  domain: QSD-02
+  technique: QTE-02.002
+  control: QSC-02.002
+  test_class: T5-controlled-physical
+  purpose: 'Verify the control outcome for: QKD source, detector or implementation side-channel deviation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map proof and protection-profile assumptions to measurable module properties
+  - Review certified/evaluated evidence or execute approved laboratory characterization
+  - Compare observed parameters with acceptance envelopes
+  acceptance_criteria:
+  - Every material assumption has current supporting evidence
+  - Out-of-envelope behavior triggers safe state or investigation
+  expected_evidence:
+  - device characterization
+  - evaluation report
+  - operating-envelope telemetry
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Only execute in an authorized specialist laboratory under a written procedure, qualified supervision,
+    defined operating limits and stop conditions. Prefer reviewed existing evidence or synthetic data when sufficient.
+  minimum_qal: QAL-4
+  references:
+  - SRC-ISO-QKD1
+  - SRC-ISO-QKD2
+  - SRC-ETSI-QKD016
+- id: QSTEST-02.003
+  title: QKD key lifecycle and trusted-node assessment
+  domain: QSD-02
+  technique: QTE-02.003
+  control: QSC-02.003
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Trusted-node, KMS or key-relay compromise.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace a test key from generation to authorized consumer and destruction
+  - Verify access, uniqueness, state transitions and error handling
+  - Review trusted-node compromise assumptions and compensating controls
+  acceptance_criteria:
+  - No unauthorized role can retrieve or redirect key material
+  - Key IDs, state and consumer binding remain consistent end to end
+  expected_evidence:
+  - data-flow diagram
+  - KMS access controls
+  - key lifecycle audit trail
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ETSI-QKD014
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-NSA-QKD
+- id: QSTEST-02.004
+  title: QKD degradation and fallback exercise
+  domain: QSD-02
+  technique: QTE-02.004
+  control: QSC-02.004
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: QKD availability degradation or secret-key-rate exhaustion.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Use simulator or approved test channel to vary service availability within safe limits
+  - Measure key supply, buffering, alarms and consumer behavior
+  - Verify recovery and post-event reconciliation
+  acceptance_criteria:
+  - Degradation is detected before unsafe key exhaustion
+  - Consumer behavior follows approved fallback/fail-closed policy
+  expected_evidence:
+  - capacity model
+  - monitoring dashboard
+  - degradation exercise
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ETSI-QKD016
+  - SRC-ITU-X1710
+  - SRC-NSA-QKD
+- id: QSTEST-03.001
+  title: Quantum-network control-plane authorization test
+  domain: QSD-03
+  technique: QTE-03.001
+  control: QSC-03.001
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Quantum-network control, routing or orchestration compromise.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Build a representative non-production topology
+  - Exercise allowed and denied role actions
+  - Verify topology/state integrity and complete audit correlation
+  acceptance_criteria:
+  - Unauthorized changes are rejected
+  - Every accepted high-impact change is attributable and recoverable
+  expected_evidence:
+  - RBAC/ABAC policy
+  - controller logs
+  - configuration signatures
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ITU-X1710
+  - SRC-ITU-Y3832
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-03.002
+  title: Quantum-resource metadata consistency simulation
+  domain: QSD-03
+  technique: QTE-03.002
+  control: QSC-03.002
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Entanglement, repeater or quantum-memory resource manipulation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Model representative allocation, expiration and failure scenarios
+  - Inject only synthetic metadata inconsistencies
+  - Verify detection, rejection and safe reallocation logic
+  acceptance_criteria:
+  - Invalid or stale resource state is not consumed
+  - Service decisions remain traceable to authenticated evidence
+  expected_evidence:
+  - resource ledger/log
+  - scheduler policy
+  - quality-monitoring records
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-03.003
+  title: Synchronization fault simulation
+  domain: QSD-03
+  technique: QTE-03.003
+  control: QSC-03.003
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Quantum/classical synchronization and timing manipulation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Replay synthetic offset, drift and ordering conditions against protocol/testbed logic
+  - Measure detection thresholds and service effects
+  - Verify safe recovery and event reconciliation
+  acceptance_criteria:
+  - Out-of-bound timing is detected and quarantined
+  - No invalid event/key/result association is accepted silently
+  expected_evidence:
+  - time-source architecture
+  - drift telemetry
+  - holdover/degraded-mode test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ITU-Y3800
+  - SRC-ITU-X1710
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-03.004
+  title: Quantum/classical boundary conformance simulation
+  domain: QSD-03
+  technique: QTE-03.004
+  control: QSC-03.004
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Transduction or quantum/classical boundary failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Model supported boundary states and error conditions
+  - Validate metadata and state-transition checks
+  - Exercise isolation and recovery with synthetic failures
+  acceptance_criteria:
+  - Unsupported or inconsistent boundary states are rejected
+  - Failure remains contained and observable
+  expected_evidence:
+  - interface specification
+  - characterization report
+  - fault-containment test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-04.001
+  title: QRNG evidence and source-model review
+  domain: QSD-04
+  technique: QTE-04.001
+  control: QSC-04.001
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Opaque or unsupported quantum entropy-source claims.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace each randomness claim to a component and evidence source
+  - Review entropy assumptions, operating range and validation scope
+  - Identify gaps between validated configuration and deployment
+  acceptance_criteria:
+  - Every material claim has scoped technical evidence
+  - Deployment matches characterized configuration and limits
+  expected_evidence:
+  - source model
+  - entropy assessment
+  - validation certificate/report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+- id: QSTEST-04.002
+  title: QRNG health and failure-mode validation
+  domain: QSD-04
+  technique: QTE-04.002
+  control: QSC-04.002
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: QRNG health-test, conditioning or digitization failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Use vendor-approved test mode or synthetic input to exercise documented failure conditions
+  - Verify alarm, output gating and recovery
+  - Compare post-conditioning statistics with documented expectations without treating statistics alone as proof
+    of entropy
+  acceptance_criteria:
+  - Documented failures are detected within approved bounds
+  - Untrusted output is blocked or clearly downgraded
+  expected_evidence:
+  - health-test design
+  - test vectors/results
+  - alarm and recovery logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+- id: QSTEST-04.003
+  title: Entropy-source provenance and fallback test
+  domain: QSD-04
+  technique: QTE-04.003
+  control: QSC-04.003
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Entropy-path API substitution, injection or provenance loss.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace consumer requests to approved source/provider in a test environment
+  - Exercise documented source-unavailable behavior
+  - Verify provenance, policy enforcement and audit correlation
+  acceptance_criteria:
+  - Consumer can verify approved provider state
+  - No silent substitution or unlogged fallback occurs
+  expected_evidence:
+  - signed software inventory
+  - API contract
+  - provenance log
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ETSI-QRNG
+  - SRC-NIST-ENTROPY
+  - SRC-CYCLONEDX-CBOM
+- id: QSTEST-04.004
+  title: Key lifecycle consistency test
+  domain: QSD-04
+  technique: QTE-04.004
+  control: QSC-04.004
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Randomness-derived key lifecycle and uniqueness failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Generate a bounded test population using approved interfaces
+  - Verify identifiers, contexts, state transitions and access controls
+  - Confirm expiration and destruction behavior
+  acceptance_criteria:
+  - No prohibited reuse or context collision is observed
+  - Lifecycle state is complete, attributable and enforceable
+  expected_evidence:
+  - key-management design
+  - uniqueness checks
+  - retirement evidence
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-NIST-ENTROPY
+  - SRC-ETSI-QRNG
+- id: QSTEST-05.001
+  title: Environmental resilience evidence review
+  domain: QSD-05
+  technique: QTE-05.001
+  control: QSC-05.001
+  test_class: T5-controlled-physical
+  purpose: 'Verify the control outcome for: Environmental perturbation degrades quantum operation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Review qualified operating limits and monitoring coverage
+  - Use only approved laboratory procedures or historical/synthetic data to evaluate threshold behavior
+  - Verify alarms, safe state and recovery evidence
+  acceptance_criteria:
+  - All critical variables have calibrated monitoring and approved limits
+  - Out-of-envelope operation is detected and handled safely
+  expected_evidence:
+  - operating-envelope specification
+  - sensor calibration records
+  - alarm/recovery logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Only execute in an authorized specialist laboratory under a written procedure, qualified supervision,
+    defined operating limits and stop conditions. Prefer reviewed existing evidence or synthetic data when sufficient.
+  minimum_qal: QAL-4
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-05.002
+  title: Shared-resource isolation benchmark
+  domain: QSD-05
+  technique: QTE-05.002
+  control: QSC-05.002
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Crosstalk or shared physical resource interference.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Use synthetic, non-sensitive circuits in an authorized test tenant
+  - Compare isolated and approved co-scheduled execution statistics
+  - Evaluate whether policy thresholds and anomaly detection respond
+  acceptance_criteria:
+  - Observed interference remains within approved isolation bounds
+  - Policy prevents disallowed co-location and records exceptions
+  expected_evidence:
+  - crosstalk characterization
+  - scheduler policy
+  - isolation test report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSTEST-05.003
+  title: Support-system access-path review
+  domain: QSD-05
+  technique: QTE-05.003
+  control: QSC-05.003
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Unauthorized access to QPU support infrastructure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Enumerate physical and logical administrative paths
+  - Compare effective permissions with approved roles
+  - Review a sample of maintenance sessions and emergency access events
+  acceptance_criteria:
+  - No undocumented access path remains
+  - High-impact access is attributable, time-bounded and reviewed
+  expected_evidence:
+  - network/physical access diagram
+  - privilege matrix
+  - session logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-05.004
+  title: Hardware provenance and acceptance review
+  domain: QSD-05
+  technique: QTE-05.004
+  control: QSC-05.004
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Quantum hardware IP leakage, tampering or provenance failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Sample critical components and reconcile identity, supplier and maintenance history
+  - Verify acceptance criteria and signed artifacts
+  - Review handling of sensitive diagnostic/design data
+  acceptance_criteria:
+  - Sampled components and maintenance events are traceable
+  - Unverified items are quarantined or formally risk accepted
+  expected_evidence:
+  - HBOM/chain of custody
+  - acceptance test
+  - supplier access record
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-06.001
+  title: Calibration provenance and reproducibility test
+  domain: QSD-06
+  technique: QTE-06.001
+  control: QSC-06.001
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Calibration data poisoning or malicious miscalibration.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select a non-production or historical calibration package
+  - Verify signatures, lineage, approvals and parameter bounds
+  - Recompute approved sanity metrics or compare with independent reference workload
+  acceptance_criteria:
+  - Only approved calibration can be deployed
+  - Material deviations are detected before production use
+  expected_evidence:
+  - signed calibration package
+  - approval log
+  - comparison/reproduction report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSTEST-06.002
+  title: Control-artifact integrity validation
+  domain: QSD-06
+  technique: QTE-06.002
+  control: QSC-06.002
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Control pulse or waveform tampering.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace approved logical operation to waveform/control artifact versions
+  - Verify signatures, hashes and deployment permissions
+  - Compare deployed manifest with known-good baseline
+  acceptance_criteria:
+  - Every deployed artifact is approved and verifiable
+  - Mismatch blocks deployment or triggers safe isolation
+  expected_evidence:
+  - artifact signatures
+  - deployment manifest
+  - change audit
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-06.003
+  title: Firmware provenance and update-policy test
+  domain: QSD-06
+  technique: QTE-06.003
+  control: QSC-06.003
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Firmware, microcode or FPGA compromise.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Inspect deployed versions and trust anchors
+  - Attempt only benign invalid-signature/rollback cases on a test controller or emulator
+  - Exercise recovery to approved image
+  acceptance_criteria:
+  - Untrusted or prohibited images are rejected
+  - Recovery is documented, tested and attributable
+  expected_evidence:
+  - signed release manifest
+  - update logs
+  - secure-boot/attestation record
+  - recovery exercise
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-06.004
+  title: Telemetry completeness and tamper-evidence review
+  domain: QSD-06
+  technique: QTE-06.004
+  control: QSC-06.004
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Telemetry, logging or baseline manipulation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map selected QTE scenarios to required events
+  - Reconstruct a test job/calibration change from independent sources
+  - Verify gap, clock and integrity detection
+  acceptance_criteria:
+  - Material actions are reconstructable end to end
+  - Unauthorized log change or loss is detected within approved time
+  expected_evidence:
+  - logging architecture
+  - event samples
+  - integrity verification
+  - retention proof
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-07.001
+  title: Compiler differential and provenance test
+  domain: QSD-07
+  technique: QTE-07.001
+  control: QSC-07.001
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Malicious or untrusted compiler/transpiler transformation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Compile a suite of known circuits with pinned and comparison toolchains
+  - Compare semantics, structure, resource use and expected distributions in simulation
+  - Investigate unexplained differences and verify provenance
+  acceptance_criteria:
+  - Transformations meet defined semantic/tolerance criteria
+  - Every artifact is reproducible from an approved toolchain manifest
+  expected_evidence:
+  - toolchain SBOM
+  - transformation manifest
+  - equivalence/differential test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSTEST-07.002
+  title: Circuit and job metadata exposure review
+  domain: QSD-07
+  technique: QTE-07.002
+  control: QSC-07.002
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Quantum circuit or algorithm IP theft and reconstruction.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Enumerate artifacts visible at each workflow stage
+  - Compare visibility and retention with business need and contract
+  - Review access samples and deletion evidence
+  acceptance_criteria:
+  - Sensitive artifacts have approved handling and least-privilege access
+  - Unnecessary metadata/retention is removed or risk accepted
+  expected_evidence:
+  - data-flow/privacy review
+  - provider terms
+  - access and deletion logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-07.003
+  title: Quantum software supply-chain verification
+  domain: QSD-07
+  technique: QTE-07.003
+  control: QSC-07.003
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Dependency, package or build-pipeline compromise.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Rebuild or inspect a representative release from declared sources
+  - Verify dependency locks, attestations and signatures
+  - Scan for exposed credentials and prohibited dependencies
+  acceptance_criteria:
+  - Release is attributable and reproducible to approved inputs
+  - Unverified artifacts cannot enter the execution environment
+  expected_evidence:
+  - SBOM
+  - build attestation
+  - signature verification
+  - dependency review
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-OQS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-07.004
+  title: Result manifest and reproducibility test
+  domain: QSD-07
+  technique: QTE-07.004
+  control: QSC-07.004
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Quantum result integrity or reproducibility manipulation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select representative non-sensitive jobs
+  - Reproduce expected invariants or distributions under recorded conditions
+  - Verify all manifest links, hashes and transformations
+  acceptance_criteria:
+  - Results are traceable to immutable job and environment metadata
+  - Material unexplained divergence is detected and investigated
+  expected_evidence:
+  - result manifest
+  - artifact hashes
+  - reproduction record
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-08.001
+  title: Quantum-cloud authorization matrix test
+  domain: QSD-08
+  technique: QTE-08.001
+  control: QSC-08.001
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Quantum-cloud API, identity or session compromise.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Create representative roles in a test tenant
+  - Exercise allowed and denied API operations
+  - Verify token expiry, revocation and audit attribution
+  acceptance_criteria:
+  - Every denied operation is consistently blocked
+  - Privileged actions require approved identity and are fully logged
+  expected_evidence:
+  - IAM policy
+  - token configuration
+  - access logs
+  - privilege review
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+- id: QSTEST-08.002
+  title: Cross-tenant isolation validation
+  domain: QSD-08
+  technique: QTE-08.002
+  control: QSC-08.002
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Tenant isolation, scheduling or residual-data leakage.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Use two authorized synthetic test tenants
+  - Verify data/API/object boundaries and sanitized job lifecycle
+  - Compare scheduler and backend behavior against declared isolation policy without collecting other customers
+    data
+  acceptance_criteria:
+  - No test tenant can access the other tenant artifacts
+  - Shared effects stay within declared and monitored bounds
+  expected_evidence:
+  - isolation architecture
+  - scheduler policy
+  - tenant separation test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-HW-PRIMER
+  - SRC-QATTCK
+- id: QSTEST-08.003
+  title: Cloud job data-flow and retention test
+  domain: QSD-08
+  technique: QTE-08.003
+  control: QSC-08.003
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Job, input, parameter or result confidentiality leakage.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Trace a synthetic classified job through upload, queue, execution, logs, storage and deletion
+  - Inspect effective access and retention
+  - Verify encryption and residency evidence
+  acceptance_criteria:
+  - No prohibited artifact appears in logs or broad storage
+  - Deletion/retention and access match approved policy
+  expected_evidence:
+  - data inventory
+  - storage policy
+  - access logs
+  - deletion verification
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-08.004
+  title: Quantum-cloud continuity and exit exercise
+  domain: QSD-08
+  technique: QTE-08.004
+  control: QSC-08.004
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Provider concentration, region or service-continuity dependency.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Simulate provider/backend unavailability at orchestration layer
+  - Execute approved alternate, queue or degraded path
+  - Verify export, recovery, communications and data handling
+  acceptance_criteria:
+  - Critical processes meet recovery objective or enter approved safe state
+  - Artifacts and configurations can be securely exported or retired
+  expected_evidence:
+  - shared-responsibility matrix
+  - continuity plan
+  - export/restore test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QRAMM
+- id: QSTEST-09.001
+  title: Hybrid workflow state-integrity replay
+  domain: QSD-09
+  technique: QTE-09.001
+  control: QSC-09.001
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Classical optimizer or orchestration-state tampering.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Run a deterministic or seeded reference workflow
+  - Replay checkpoints and verify state-chain hashes and invariants
+  - Confirm unauthorized state changes are rejected or detected
+  acceptance_criteria:
+  - Every accepted transition is attributable and valid
+  - Replay reproduces approved invariants within declared tolerance
+  expected_evidence:
+  - workflow manifest
+  - state/checkpoint hashes
+  - change approvals
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-09.002
+  title: QML data-lineage and bounded-robustness test
+  domain: QSD-09
+  technique: QTE-09.002
+  control: QSC-09.002
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Training-data, feature or label poisoning in quantum ML.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Reconstruct the training/evaluation dataset from manifests
+  - Apply safe synthetic perturbations within an approved test dataset
+  - Compare performance, fairness/safety metrics and detection controls
+  acceptance_criteria:
+  - Unapproved data changes are detectable
+  - Model behavior remains within approved bounds or fails safely
+  expected_evidence:
+  - dataset manifest
+  - quality report
+  - robustness evaluation
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-09.003
+  title: Hybrid interface negative-schema test
+  domain: QSD-09
+  technique: QTE-09.003
+  control: QSC-09.003
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Serialization, parameter or protocol injection at hybrid interfaces.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Generate benign malformed and boundary-value objects from the published schema
+  - Exercise test endpoints with authorized credentials
+  - Verify rejection, rate limits, error handling and audit events
+  acceptance_criteria:
+  - Invalid or unauthorized objects never reach execution
+  - Errors do not leak secrets and are fully attributable
+  expected_evidence:
+  - API schema
+  - validation tests
+  - rejection logs
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-QATTCK
+- id: QSTEST-09.004
+  title: Hybrid decision-lineage reconstruction
+  domain: QSD-09
+  technique: QTE-09.004
+  control: QSC-09.004
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Hybrid provenance gap corrupts downstream decisions.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select a sample of material decisions
+  - Reconstruct all upstream artifacts and approvals
+  - Verify hashes, versions, identities and confidence/limitations
+  acceptance_criteria:
+  - Every sampled decision is reproducible or explainably bounded
+  - Missing or inconsistent lineage blocks high-impact use
+  expected_evidence:
+  - lineage graph
+  - signed run manifest
+  - decision audit sample
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-ARGONNE-TAXONOMY
+  - SRC-HW-PRIMER
+- id: QSTEST-10.001
+  title: Quantum-sensor resilience simulation
+  domain: QSD-10
+  technique: QTE-10.001
+  control: QSC-10.001
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Quantum sensor spoofing or environmental manipulation.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Use recorded or synthetic sensor data representing approved fault/spoof scenarios
+  - Evaluate detection, confidence and fallback logic
+  - Verify no unsafe control decision is made from untrusted measurement alone
+  acceptance_criteria:
+  - Material inconsistency is detected within approved time
+  - System degrades safely with explicit confidence state
+  expected_evidence:
+  - sensor threat model
+  - characterization report
+  - fusion/anomaly logic test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-10.002
+  title: Reference divergence and holdover simulation
+  domain: QSD-10
+  technique: QTE-10.002
+  control: QSC-10.002
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Timing, clock or reference manipulation in quantum metrology.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Replay synthetic reference offset, loss and recovery scenarios
+  - Measure alarm, confidence and downstream behavior
+  - Verify reconciliation after recovery
+  acceptance_criteria:
+  - Out-of-policy divergence is detected
+  - Downstream systems receive explicit trusted/degraded state and behave safely
+  expected_evidence:
+  - reference architecture
+  - comparison telemetry
+  - holdover exercise
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-10.003
+  title: Measurement lineage and transformation replay
+  domain: QSD-10
+  technique: QTE-10.003
+  control: QSC-10.003
+  test_class: T3-simulation
+  purpose: 'Verify the control outcome for: Measurement data integrity or provenance failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select a non-sensitive measurement sample
+  - Verify source/calibration/time hashes and replay transformations
+  - Compare derived values and identify manual interventions
+  acceptance_criteria:
+  - Raw-to-derived lineage is complete and reproducible
+  - Unauthorized modification is detected or prevents use
+  expected_evidence:
+  - measurement manifest
+  - transformation code/version
+  - integrity verification
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-10.004
+  title: Sensing purpose and access-control review
+  domain: QSD-10
+  technique: QTE-10.004
+  control: QSC-10.004
+  test_class: T2-static
+  purpose: 'Verify the control outcome for: Unauthorized use or disclosure of sensitive quantum-sensing capability.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map roles and purposes to sensor operations and datasets
+  - Exercise representative allowed/denied access in a test context
+  - Review retention, sharing and export records
+  acceptance_criteria:
+  - Only approved roles and purposes can access sensitive capability/data
+  - Exceptions are authorized, logged and time-bounded
+  expected_evidence:
+  - authorization matrix
+  - data-use policy
+  - access/export audit
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-2
+  references:
+  - SRC-DOE-QIS
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-11.001
+  title: Critical component provenance sample
+  domain: QSD-11
+  technique: QTE-11.001
+  control: QSC-11.001
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Counterfeit, substituted or untrusted component.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Select risk-based sample across hardware/software components
+  - Reconcile purchase, identity, version, custody and acceptance evidence
+  - Investigate substitutions and undocumented changes
+  acceptance_criteria:
+  - Sampled components match approved specification and source
+  - Unverified components remain quarantined or risk accepted by authority
+  expected_evidence:
+  - BOM/provenance record
+  - receipt inspection
+  - acceptance report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-11.002
+  title: Update authenticity and anti-rollback test
+  domain: QSD-11
+  technique: QTE-11.002
+  control: QSC-11.002
+  test_class: T4-isolated-integration
+  purpose: 'Verify the control outcome for: Update-signing, release-provenance or maintenance-channel failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - On a test device/emulator, validate approved update and benign invalid-signature/old-version cases
+  - Review maintenance identity/session controls
+  - Exercise recovery path
+  acceptance_criteria:
+  - Only authorized releases install
+  - Prohibited rollback and unauthenticated maintenance are blocked and logged
+  expected_evidence:
+  - signed release manifest
+  - trust-anchor inventory
+  - maintenance log
+  - rollback/recovery test
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-3
+  references:
+  - SRC-CYCLONEDX-CBOM
+  - SRC-HW-PRIMER
+- id: QSTEST-11.003
+  title: Lifecycle gap and replacement-readiness review
+  domain: QSD-11
+  technique: QTE-11.003
+  control: QSC-11.003
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Dependency obsolescence or unsupported lifecycle.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Compare mission/data horizon with support dates for critical components
+  - Identify single-source and non-rebuildable dependencies
+  - Review or exercise representative replacement/export path
+  acceptance_criteria:
+  - Every critical lifecycle gap has funded treatment or approved acceptance
+  - Required artifacts remain recoverable and usable
+  expected_evidence:
+  - lifecycle register
+  - vendor roadmap
+  - replacement test
+  - escrow/archive record
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-NIST-AGILITY
+  - SRC-QRAMM
+  - SRC-CYCLONEDX-CBOM
+- id: QSTEST-11.004
+  title: Third-party shared-responsibility and exit review
+  domain: QSD-11
+  technique: QTE-11.004
+  control: QSC-11.004
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Third-party concentration, hidden subcontractor or exit failure.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map critical services and supplier tiers to controls
+  - Verify contracts and technical evidence for responsibilities
+  - Tabletop provider failure, compromise and exit scenarios
+  acceptance_criteria:
+  - No critical responsibility is unassigned
+  - Continuity/exit actions, evidence and data disposition are executable
+  expected_evidence:
+  - supplier map
+  - contract clauses
+  - continuity/exit exercise
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-12.001
+  title: Security-claim substantiation review
+  domain: QSD-12
+  technique: QTE-12.001
+  control: QSC-12.001
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Unsupported quantum-security or assurance claim.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Sample public, contractual and technical claims
+  - Trace each to current evidence and exact scope
+  - Classify as verified, partial, unsupported or refuted
+  acceptance_criteria:
+  - No material claim exceeds supporting evidence
+  - Limitations and assumptions are disclosed consistently
+  expected_evidence:
+  - assurance case
+  - claim-evidence matrix
+  - approval record
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-IEEE-P1947
+  - SRC-ISO-QKD1
+  - SRC-ETSI-QKD016
+- id: QSTEST-12.002
+  title: Quantum incident-response tabletop
+  domain: QSD-12
+  technique: QTE-12.002
+  control: QSC-12.002
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Missing threat model, ownership or incident process.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Run a scenario spanning quantum and classical components
+  - Record decisions, communications, evidence and safety actions
+  - Identify unowned dependencies and recovery gaps
+  acceptance_criteria:
+  - Roles and authority are clear
+  - Required evidence, provider contacts and safe-state actions are executable
+  expected_evidence:
+  - RACI
+  - threat model
+  - incident playbook
+  - tabletop report
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-IEEE-P1947
+  - SRC-QRAMM
+  - SRC-QUASAR
+- id: QSTEST-12.003
+  title: Critical-duty and competency assessment
+  domain: QSD-12
+  technique: QTE-12.003
+  control: QSC-12.003
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Inadequate skills, review independence or separation of duties.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map high-impact actions to effective permissions and competencies
+  - Sample changes/calibrations/claims for independent approval
+  - Identify single-person failure/abuse paths
+  acceptance_criteria:
+  - No prohibited single-person end-to-end path exists
+  - Critical roles have current demonstrated competence or supervision
+  expected_evidence:
+  - skills matrix
+  - access/approval workflow
+  - review records
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-ARGONNE-TAXONOMY
+- id: QSTEST-12.004
+  title: Quantum obligation and data-flow review
+  domain: QSD-12
+  technique: QTE-12.004
+  control: QSC-12.004
+  test_class: T1-documentary
+  purpose: 'Verify the control outcome for: Legal, regulatory, export, privacy or data-sovereignty gap.'
+  prerequisites:
+  - Documented authorization and scope
+  - Named test owner and reviewer
+  - Evidence handling and stop conditions
+  procedure:
+  - Map assets, people, data and remote access by jurisdiction
+  - Trace applicable obligations to controls and contracts
+  - Sample transfers, exports and retention for evidence
+  acceptance_criteria:
+  - All material obligations have accountable controls and evidence
+  - Unapproved transfer or processing is blocked or remediated
+  expected_evidence:
+  - legal/privacy assessment
+  - data-flow and region evidence
+  - licenses/approvals
+  - contract mapping
+  result_values:
+  - pass
+  - fail
+  - partial
+  - inconclusive
+  - not_run
+  destructive: false
+  production_safe_by_default: false
+  safety: Use only owned or expressly authorized systems and synthetic/non-sensitive workloads. Do not affect other
+    tenants or production availability.
+  minimum_qal: QAL-1
+  references:
+  - SRC-QRAMM
+  - SRC-QUASAR
+  - SRC-IEEE-P1947
