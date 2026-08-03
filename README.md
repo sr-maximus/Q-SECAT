@@ -4,6 +4,10 @@
 **Versión:** 0.1.0 — Community Draft<br>
 **Creador conceptual y autor principal:** Edwin Javier Peñuela Camacho
 
+<p align="center">
+  <img src="assets/q-secat-readme-banner.png" alt="Q-SECAT quantum security evaluation framework visual banner" width="100%">
+</p>
+
 **Español** · [English](README.en.md)
 
 Q-SECAT es un marco abierto, trazable y orientado a evidencia para evaluar la seguridad de sistemas **post-cuánticos, cuánticos y quantum-enabled**. Su finalidad es integrar, en una sola metodología, tres preguntas que suelen tratarse por separado:
