@@ -2,7 +2,7 @@
 
 **Quantum Security Evaluation, Controls, Assurance & Testing Framework**<br>
 **Versión:** 0.1.0 — Community Draft<br>
-**Creador conceptual y autor principal:** Edwin Javier Peñuela Camacho
+**Creador conceptual y autor principal:** Edwin Peñuela
 
 <p align="center">
   <img src="assets/q-secat-readme-banner.png" alt="Q-SECAT quantum security evaluation framework visual banner" width="100%">
