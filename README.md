@@ -130,7 +130,7 @@ El repositorio está preparado para `sr-maximus/Q-SECAT`. Los comandos de creaci
 
 ## Autoría y contribuciones
 
-- **Creador conceptual, dirección del modelo y autor principal:** Edwin Javier Peñuela Camacho.
+- **Creador conceptual, dirección del modelo y autor principal:** Edwin Peñuela.
 - Las contribuciones externas se reconocen mediante Git, `CONTRIBUTORS.md` y el historial de cambios.
 
 ## Licencia y marcas
